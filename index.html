@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Author Name - Novelist</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;700&display=swap');
+
+		:root {
+			--font-size-body: 1.15rem;
+			--font-size-heading: 2rem;
+			--font-size-subheading: 1.5rem;
+			--space-1: 0.75rem;
+			--space-2: 1.25rem;
+			--space-3: 2rem;
+			--space-4: 2.5rem;
+			--space-5: 3.75rem;
+			--space-6: 4rem;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Playfair Display', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: #fff;
+			font-size: var(--font-size-body);
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 0 var(--space-4);
+		}
+
+		/* Header */
+		header {
+			background: rgba(255,255,255,0.85);
+			backdrop-filter: blur(10px);
+			box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index: 1000;
+			border-bottom: 1px solid #ececec;
+			padding: 0.5rem 0;
+			transition: background 0.2s, box-shadow 0.2s;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 0.5rem;
+		}
+
+		.logo {
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: #232323;
+			text-decoration: none;
+			letter-spacing: 1.5px;
+			font-family: 'Playfair Display', serif;
+			padding: 0.1em 0.2em;
+			border-radius: 0.3em;
+			transition: background 0.2s;
+		}
+		.logo:hover {
+			background: #f5f5f5;
+		}
+
+		.nav-links {
+			display: flex;
+			list-style: none;
+			gap: 0.7rem;
+			margin: 0;
+			padding: 0;
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: #232323;
+			font-weight: 500;
+			font-size: 1rem;
+			text-transform: uppercase;
+			letter-spacing: 1.1px;
+			padding: 0.15em 0.5em;
+			border-radius: 0.3em;
+			transition: background 0.18s, color 0.18s, opacity 0.2s;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+			opacity: 0.92;
+		}
+		.nav-links a:hover {
+			background: #ececec;
+			color: #111;
+			opacity: 1;
+		}
+
+		/* Hero Section */
+		.hero {
+			height: 100vh;
+			display: flex;
+			align-items: stretch;
+			justify-content: center;
+			text-align: center;
+			background: #fafafa;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 1;
+			background: url('/assets/DSCF3563_B&W.jpg') center center/cover no-repeat;
+			padding: 0;
+			border-radius: 0;
+			height: 100vh;
+			width: 100vw;
+			max-width: none;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			box-shadow: none;
+			overflow: hidden;
+		}
+
+		.hero-content::before {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba(255,255,255,0.35);
+			z-index: 1;
+			border-radius: 0;
+		}
+
+		.hero-content > * {
+			position: relative;
+			z-index: 2;
+		}
+
+		.hero-content h1 {
+			font-size: clamp(2.5rem, 6vw, 4rem);
+			font-weight: 700;
+			margin-bottom: var(--space-2);
+			color: #181818;
+			letter-spacing: 4px;
+			text-shadow: 0 6px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(255,255,255,0.18);
+			background: linear-gradient(90deg, #222 60%, #6e6e6e 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			font-family: 'Playfair Display', serif;
+		}
+
+		.hero-content p {
+			font-size: clamp(1.2rem, 2.5vw, 2rem);
+			color: #232323;
+			font-weight: 500;
+			margin-bottom: var(--space-4);
+			letter-spacing: 2px;
+			text-shadow: 0 4px 24px rgba(0,0,0,0.18), 0 1px 6px rgba(255,255,255,0.12);
+			background: linear-gradient(90deg, #444 60%, #888 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			font-family: 'Playfair Display', serif;
+		}
+
+		.cta-button {
+			display: inline-block;
+			font-size: 1.1rem;
+			padding: var(--space-2) var(--space-4);
+			border-radius: 2rem;
+			box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+			letter-spacing: 2px;
+			font-weight: 700;
+			background: linear-gradient(90deg, #222 60%, #6e6e6e 100%);
+			color: #fff;
+			text-decoration: none;
+			transition: background 0.3s, transform 0.2s;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		.cta-button:hover {
+			background: linear-gradient(90deg, #444 60%, #888 100%);
+			transform: translateY(-2px) scale(1.04);
+		}
+
+		/* Sections */
+		.section {
+			padding: var(--space-6) 0;
+		}
+
+		.section h2 {
+			font-size: var(--font-size-heading);
+			font-weight: 300;
+			margin-bottom: var(--space-4);
+			text-align: center;
+			color: #333;
+			font-family: 'Playfair Display', serif;
+		}
+
+		/* About Section */
+		.about-content {
+			max-width: 700px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.about-text p {
+			font-size: var(--font-size-body);
+			color: #666;
+			font-weight: 300;
+			margin-bottom: var(--space-3);
+			line-height: 1.8;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		/* Books Section */
+		.books {
+			background: #fafafa;
+		}
+
+		.books-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: var(--space-5);
+			margin-top: var(--space-4);
+		}
+
+		.book-card {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.book-cover {
+			width: 100%;
+			height: 340px;
+			background: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1.2rem;
+			box-sizing: border-box;
+		}
+		.book-cover img {
+			height: 100%;
+			width: auto;
+			max-width: 100%;
+			object-fit: contain;
+			border-radius: 0.5rem;
+			box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+			background: #f7f7f7;
+			padding: 0.2rem;
+		}
+
+		.book-title {
+			font-size: var(--font-size-subheading);
+			font-weight: 400;
+			margin-bottom: var(--space-1);
+			color: #333;
+			font-family: 'Playfair Display', serif;
+		}
+
+		.book-description {
+			color: #666;
+			font-size: var(--font-size-body);
+			font-weight: 300;
+			line-height: 1.6;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		/* Newsletter Section */
+		.newsletter {
+			background: #fff;
+			text-align: center;
+			padding-bottom: var(--space-6);
+		}
+
+		.newsletter h2 {
+			margin-bottom: 30px;
+		}
+
+		.newsletter p {
+			font-size: var(--font-size-body);
+			color: #666;
+			font-weight: 300;
+			margin-bottom: var(--space-4);
+			max-width: 500px;
+			margin-left: auto;
+			margin-right: auto;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		.newsletter-form {
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		/* Footer */
+		footer {
+			background: #333;
+			color: #fff;
+			text-align: center;
+			padding: var(--space-3) 0;
+			position: relative;
+			width: 100vw;
+			z-index: 2000;
+		}
+
+		.social-links {
+			display: flex;
+			justify-content: center;
+			gap: var(--space-4);
+			margin-bottom: var(--space-3);
+		}
+
+		.social-links a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 300;
+			transition: opacity 0.3s ease;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		.social-links a:hover {
+			opacity: 0.6;
+		}
+
+		footer p {
+			font-size: 0.85rem;
+			color: #999;
+			font-weight: 300;
+			font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		}
+
+		/* Mobile Responsive */
+		@media (max-width: 768px) {
+			.container {
+				padding: 0 var(--space-2);
+			}
+
+			header {
+				padding: 0;
+			}
+			nav {
+				padding: 0.5rem 0;
+			}
+			.logo {
+				font-size: 1rem;
+				padding: 0.1em 0.2em;
+			}
+
+			.nav-links {
+				display: none;
+			}
+
+			.hero-content h1 {
+				font-size: 1.5rem;
+			}
+
+			.hero-content p {
+				font-size: 1rem;
+			}
+
+			.section {
+				padding: var(--space-3) 0;
+			}
+
+			.section h2 {
+				font-size: 1.25rem;
+				margin-bottom: var(--space-4);
+			}
+
+			.books-grid {
+				grid-template-columns: 1fr;
+				gap: var(--space-4);
+			}
+
+			body {
+				font-size: 1rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="container">
+			<ul class="nav-links">
+				<li><a href="#about">About</a></li>
+				<li><a href="#books">Books</a></li>
+				<li><a href="#newsletter">Newsletter</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section id="home" class="hero">
+		<div class="hero-content">
+			<h1>John Edward O'Brien</h1>
+			<p>Novelist</p>
+			<a href="#books" class="cta-button">View Books</a>
+		</div>
+	</section>
+
+	<section id="about" class="section">
+		<div class="container">
+			<h2>About</h2>
+			<div class="about-content">
+				<div class="about-text">
+					<p>I'm a writer from Boston who somehow ended up studying film at Fitchburg State University before life took me on adventures through Los Angeles, Denver, and Chattanooga. These days I'm back home, spending my days writing code as a web developer and my nights working on novels.</p>
+					
+					<p>I'm a bit of a reading addict—I'll devour everything from ancient historians like Herodotus to mind-bending authors like Philip K. Dick and Thomas Pynchon. Give me Shakespeare, Dostoyevsky, or Roberto Bolaño and I'm happy. All these voices swimming around in my head probably explain why I love writing stories that jump between different times and places.</p>
+					
+					<p>My latest novel, The Oval Glass, came from wondering what would happen if a mysterious object could connect people across centuries. Turns out, that's exactly the kind of story I love telling.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="books" class="section books">
+		<div class="container">
+			<h2>Books</h2>
+			<div class="books-grid">
+				<div class="book-card">
+					<div class="book-cover">
+						<img src="/assets/Intona_Artwork_front_only.jpg" alt="The Quiet Hours Book Cover" style="height:100%;width:auto;max-width:100%;object-fit:cover;" />
+					</div>
+					<h3 class="book-title">The Oval Glass</h3>
+					<p class="book-description">
+						When an ancient glass artifact with supernatural powers becomes 
+						the only hope for two artists facing apocalyptic doom—one kidnapped by cartels, the 
+						other watching his pregnant lover dying—they must unlock its centuries-spanning mystery before 
+						it's too late. Available now on Amazon.
+					</p>
+					<button class="cta-button">
+						<a href="https://www.amazon.com/dp/TBD" target="_blank" style="color: #fff; text-decoration: none;">Buy Now</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="newsletter" class="section newsletter">
+		<div class="container">
+			<h2>Stay Updated</h2>
+			<p>Join my newsletter for literary discoveries, behind-the-scenes glimpses into my writing process, and thoughts on how stories connect us across time and space. I'll drop into your inbox when I have something worth sharing—no filler, just the good stuff.</p>
+			<div class="newsletter-form" style="display: flex; justify-content: center; align-items: center;">
+				<script async src="https://eocampaign1.com/form/9e76089e-5bb5-11f0-bf9f-ed28c90d6451.js" data-form="9e76089e-5bb5-11f0-bf9f-ed28c90d6451"></script>
+			</div>
+		</div>
+	</section>
+
+	<footer id="contact">
+		<div class="container">
+			<div class="social-links" style="gap: 0.5rem; align-items: center;">
+				<a href="mailto:johnobrien8642@gmail.com" title="Email" style="background: #444; color: #fff; padding: 0.5em 1.2em; border-radius: 2em; font-weight: 600; font-size: 1rem; text-transform: none; letter-spacing: 0.5px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); transition: background 0.2s; display: inline-block;">johnobrien8642@gmail.com</a>
+				<button id="copy-email-btn" onclick="copyEmail()" style="background: #fff; color: #444; border: none; border-radius: 2em; cursor: pointer; font-family: inherit; font-size: 1rem; font-weight: 600; padding: 0.5em 1.2em; margin-left: 0.5em; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); transition: background 0.2s; position: relative;">Copy Email
+					<span id="copy-success" style="opacity:0;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#444;color:#fff;padding:0.25em 0.8em;border-radius:1em;font-size:0.95em;font-weight:500;pointer-events:none;transition:opacity 0.3s;">Copied!</span>
+				</button>
+			</div>
+			<p>&copy; 2025 John Edward O'Brien. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+		// Smooth scrolling
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			});
+		});
+
+		function copyEmail() {
+			navigator.clipboard.writeText('johnobrien8642@gmail.com');
+			const btn = document.getElementById('copy-email-btn');
+			const success = document.getElementById('copy-success');
+			success.style.opacity = 1;
+			setTimeout(() => {
+				success.style.opacity = 0;
+			}, 1200);
+		}
+	</script>
+</body>
+</html>
