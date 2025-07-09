@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#2c3e50" rx="4"/>
+  
+  <!-- Typewriter body -->
+  <rect x="4" y="18" width="24" height="10" rx="1" fill="#34495e"/>
+  
+  <!-- Paper -->
+  <rect x="6" y="8" width="20" height="12" rx="1" fill="#ffffff"/>
+  
+  <!-- Typed text lines -->
+  <rect x="8" y="12" width="16" height="1" fill="#2c3e50"/>
+  <rect x="8" y="14" width="14" height="1" fill="#2c3e50"/>
+  <rect x="8" y="16" width="12" height="1" fill="#2c3e50"/>
+  
+  <!-- Keys -->
+  <circle cx="10" cy="24" r="1.5" fill="#7f8c8d"/>
+  <circle cx="14" cy="24" r="1.5" fill="#7f8c8d"/>
+  <circle cx="18" cy="24" r="1.5" fill="#7f8c8d"/>
+  <circle cx="22" cy="24" r="1.5" fill="#7f8c8d"/>
+</svg>
