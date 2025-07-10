@@ -32,12 +32,15 @@
 			color: #333;
 			background: #fff;
 			font-size: var(--font-size-body);
+			overflow-x: hidden;
 		}
 
 		.container {
 			max-width: 1000px;
 			margin: 0 auto;
 			padding: 0 var(--space-4);
+			width: 100%;
+			box-sizing: border-box;
 		}
 
 		/* Header */
@@ -121,7 +124,7 @@
 			border-radius: 0;
 			height: 100vh;
 			width: 100vw;
-			max-width: none;
+			max-width: 100vw;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -313,7 +316,7 @@
 			text-align: center;
 			padding: var(--space-3) 0;
 			position: relative;
-			width: 100vw;
+			width: 100%;
 			z-index: 2000;
 		}
 
@@ -350,6 +353,7 @@
 		@media (max-width: 768px) {
 			.container {
 				padding: 0 var(--space-2);
+				width: 100%;
 			}
 
 			header {
@@ -393,6 +397,32 @@
 				font-size: 1rem;
 			}
 		}
+
+		#copy-email-btn {
+	font-size: 0.85rem !important;
+	padding: 0.35em 0.9em !important;
+}
+#copy-success {
+	opacity: 0;
+	position: absolute;
+	left: 50%;
+	bottom: 110%;
+	transform: translateX(-50%);
+	background: #444;
+	color: #fff;
+	padding: 0.25em 0.8em;
+	border-radius: 1em;
+	font-size: 0.85em;
+	font-weight: 500;
+	pointer-events: none;
+	transition: opacity 0.3s;
+	white-space: nowrap;
+	z-index: 10;
+}
+#copy-email-btn:hover #copy-success,
+#copy-email-btn:focus #copy-success {
+	opacity: 1;
+}
 	</style>
 </head>
 <body>
@@ -466,10 +496,9 @@
 	<footer id="contact">
 		<div class="container">
 			<div class="social-links" style="gap: 0.5rem; align-items: center;">
-				<a href="mailto:johnobrien8642@gmail.com" title="Email" style="background: #444; color: #fff; padding: 0.5em 1.2em; border-radius: 2em; font-weight: 600; font-size: 1rem; text-transform: none; letter-spacing: 0.5px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); transition: background 0.2s; display: inline-block;">johnobrien8642@gmail.com</a>
-				<button id="copy-email-btn" onclick="copyEmail()" style="background: #fff; color: #444; border: none; border-radius: 2em; cursor: pointer; font-family: inherit; font-size: 1rem; font-weight: 600; padding: 0.5em 1.2em; margin-left: 0.5em; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); transition: background 0.2s; position: relative;">Copy Email
-					<span id="copy-success" style="opacity:0;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#444;color:#fff;padding:0.25em 0.8em;border-radius:1em;font-size:0.95em;font-weight:500;pointer-events:none;transition:opacity 0.3s;">Copied!</span>
-				</button>
+				<span id="copy-email" style="background: #444; color: #fff; padding: 0.5em 1.2em; border-radius: 2em; font-weight: 600; font-size: 1rem; text-transform: none; letter-spacing: 0.5px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); transition: background 0.2s; display: inline-block; cursor: pointer; position: relative;" tabindex="0">johnobrienauthor@gmail.com
+					<span id="copy-success" style="opacity:0;position:absolute;left:50%;bottom:110%;transform:translateX(-50%);background:#444;color:#fff;padding:0.25em 0.8em;border-radius:1em;font-size:0.85em;font-weight:500;pointer-events:none;transition:opacity 0.3s;white-space:nowrap;z-index:10;">Copied!</span>
+				</span>
 			</div>
 			<p>&copy; 2025 John Edward O'Brien. All rights reserved.</p>
 		</div>
@@ -490,14 +519,29 @@
 			});
 		});
 
-		function copyEmail() {
-			navigator.clipboard.writeText('johnobrien8642@gmail.com');
-			const btn = document.getElementById('copy-email-btn');
-			const success = document.getElementById('copy-success');
-			success.style.opacity = 1;
-			setTimeout(() => {
-				success.style.opacity = 0;
-			}, 1200);
+		// Email copy functionality
+		const email = "johnobrienauthor@gmail.com";
+		const emailSpan = document.getElementById('copy-email');
+		const successTooltip = document.getElementById('copy-success');
+		if (emailSpan) {
+			emailSpan.textContent = email;
+			emailSpan.appendChild(successTooltip);
+			emailSpan.addEventListener('click', function () {
+				navigator.clipboard.writeText(email);
+				successTooltip.style.opacity = 1;
+				setTimeout(() => {
+					successTooltip.style.opacity = 0;
+				}, 1200);
+			});
+			emailSpan.addEventListener('keydown', function (e) {
+				if (e.key === 'Enter' || e.key === ' ') {
+					navigator.clipboard.writeText(email);
+					successTooltip.style.opacity = 1;
+					setTimeout(() => {
+						successTooltip.style.opacity = 0;
+					}, 1200);
+				}
+			});
 		}
 	</script>
 </body>
