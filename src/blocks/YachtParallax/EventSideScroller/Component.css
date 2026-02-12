@@ -1,0 +1,117 @@
+.EventSideScroller .grid-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  overflow: visible;
+}
+
+.EventSideScroller .cards-cont {
+  order: 2;
+  width: 100%;
+  overflow: visible;
+}
+
+.EventSideScroller .event-header-container {
+  order: 1;
+}
+
+@media (min-width: 64rem) {
+  .EventSideScroller .grid-cont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .EventSideScroller .cards-cont {
+    order: 1;
+  }
+
+  .event-header-container {
+    order: 2;
+  }
+}
+
+.EventSideScroller .event-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.EventSideScroller .event-card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.EventSideScroller .event-card-background picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.EventSideScroller .event-card-background img {
+  object-fit: cover;
+}
+
+.EventSideScroller .content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  border-radius: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 16px;
+}
+
+.EventSideScroller .event-card-inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem; /* rounded-2xl */
+  color: rgb(255, 255, 255);
+}
+
+@media (min-width: 48rem) {
+  .EventSideScroller .event-card-inner {
+    width: 60%;
+    align-items: flex-start;
+  }
+}
+
+.EventSideScroller .event-card-title {
+  font-size: 1.4625rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.EventSideScroller .event-card-dates {
+  font-size: 1.09375rem;
+  line-height: 1.4;
+}
+
+.EventSideScroller .event-card-link {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-top: auto;
+  width: 100%;
+  text-align: right;
+}
+

@@ -1,0 +1,225 @@
+/* VideoSideScroller Grid Styles */
+.video-side-scroller {
+  position: relative;
+}
+/* Outer Grid: 1 column at mobile, 2 columns at tablet and desktop */
+.video-side-scroller-grid-outer {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48rem) {
+  .video-side-scroller-grid-outer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Grow-shrink-layout: 1fr 1.16fr columns at tablet and desktop */
+  .video-side-scroller-grid-outer.grow-shrink-outer {
+    grid-template-columns: 1fr 1.16fr;
+  }
+}
+
+/* Grid Layout: 2 columns at mobile, 1 column at tablet, 2 columns at desktop */
+.video-side-scroller-grid-inner.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  grid-auto-rows: 132px;
+}
+
+/* Tablet: 1 column, 300svh height */
+@media (min-width: 48rem) {
+  .video-side-scroller-grid-inner.grid-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    grid-auto-rows: 1fr;
+    height: 600svh;
+  }
+}
+
+@keyframes sailboatFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Desktop: 2 columns, 59vw width, 350svh height */
+@media (min-width: 64rem) {
+  .video-side-scroller-grid-inner.grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+    width: 59vw;
+    height: 350svh;
+  }
+}
+
+/* Grow/Shrink Layout: flex container with videos taking full width/height */
+.video-side-scroller-grid-inner.grow-shrink-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Videos in grow-shrink-layout take full width with aspect ratio 762/410 */
+.video-side-scroller-grid-inner.grow-shrink-layout .video-card {
+  width: 100%;
+  aspect-ratio: 762 / 410;
+}
+
+/* Layered Cards Layout */
+.video-side-scroller-layered-outer {
+  width: 100%;
+}
+
+.video-side-scroller-layered-header {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Mobile: Layered Cards Wrapper */
+.video-layered-cards-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Desktop: Two-column layout */
+@media (min-width: 64rem) {
+  .video-layered-cards-wrapper.desktop-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+
+  .video-layered-cards-left-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-layered-cards-left-column .video-layered-cards-content {
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .video-layered-cards-left-column .video-layered-cards-button-wrapper {
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .video-layered-cards-images-container.desktop-column {
+    width: 100%;
+    position: relative;
+  }
+}
+
+/* Card Title and Description - transitions between template title and button */
+.video-layered-cards-content {
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.video-layered-cards-button-wrapper {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.video-layered-cards-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.video-layered-cards-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: hsl(var(--foreground) / 0.8);
+}
+
+/* Layered Images Container at Bottom */
+.video-layered-cards-images-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 343 / 360;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+/* White divs to hide sliding animations at container edges */
+.video-layered-cards-edge-left,
+.video-layered-cards-edge-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1rem;
+  background-color: white;
+  pointer-events: none;
+  z-index: 10000;
+  border-radius: 0.5rem;
+}
+
+.video-layered-cards-edge-left {
+  left: -1rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.video-layered-cards-edge-right {
+  right: -1rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.video-layered-card-image-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  pointer-events: none;
+  touch-action: pan-y;
+}
+
+.video-layered-card-image-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-layered-card-image-picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-layered-card-image-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-layered-card-image-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

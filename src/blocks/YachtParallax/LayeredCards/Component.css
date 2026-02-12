@@ -1,0 +1,100 @@
+.LayeredCards {
+  width: 100%;
+}
+
+.layered-cards-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.layered-cards-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.layered-cards-button {
+  align-self: flex-start;
+  padding: 0.75rem 1.5rem;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.layered-cards-button:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+/* Mobile: Stacked Cards */
+.stacked-cards-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: calc(60vh + 4rem);
+  padding-bottom: 6rem;
+  overflow: visible;
+  touch-action: pan-y;
+}
+
+.stacked-card-item {
+  position: absolute;
+  width: calc((100% - 2rem) * 0.9);
+  height: 60vh;
+  top: 0;
+  left: 50%;
+  transform-origin: top center;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.stacked-card-item:active {
+  cursor: grabbing;
+}
+
+/* Tablet/Desktop: Column Layout */
+.layered-cards-wrapper {
+  position: relative;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 32px;
+  gap: 64px;
+}
+
+.layered-card-item {
+  aspect-ratio: 770/428;
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .layered-cards-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .layered-cards-wrapper {
+    padding: 0;
+  }
+}
+
+
+

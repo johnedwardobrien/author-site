@@ -1,0 +1,1468 @@
+/* Defaults */
+
+.yacht-parallax-cont {
+	overflow: clip;
+}
+
+.yacht-parallax-cont .TopHero {
+	z-index: 500;
+	position: relative;
+}
+
+.yacht-parallax-cont .IconBanner {
+	z-index: 499;
+	position: relative;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 {
+	position: unset !important;
+}
+
+.yacht-parallax-cont .VideoSideScrollerWrapper .VideoSideScroller {
+	z-index: 500;
+	position: relative;
+}
+
+.yacht-parallax-cont .LayeredCards {
+	z-index: 497;
+	position: relative;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 {
+	z-index: 496;
+	position: relative;
+}
+
+.yacht-parallax-cont .EventSideScroller {
+	z-index: 495;
+	position: relative;
+}
+
+.yacht-parallax-cont .ClickSlider {
+	z-index: 493;
+	position: relative;
+}
+
+.yacht-parallax-cont .CTAButtons {
+	z-index: 492;
+	position: relative;
+}
+
+.yacht-parallax-cont .media {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.yacht-parallax-cont .bg-mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to bottom, rgb(0,0,0,0) 0%, rgb(0,0,0,.3) 100%);
+}
+
+.yacht-parallax-cont header {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	z-index: 999999;
+	height: 55px;
+	width: 100%;
+	background-color: rgb(224,224,225);
+}
+
+.yacht-parallax-cont header .inner {
+	z-index: 999999;
+	background-color: #e0e0e1;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	max-width: 1000px;
+	height: 55px;
+	padding: 16px 22px;
+	display: flex;
+	position: fixed;
+	top: 0;
+}
+
+.yacht-parallax-cont header :is(h2, a) {
+	position: relative;
+	color: black;
+	text-align: start;
+	font-family: var(--yb-font-header);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 20px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont header a {
+	display: flex;
+	gap: .2rem;
+	align-items: center;
+	font-size: 16px;
+}
+
+.yacht-parallax-cont header a > svg {
+	font-size: 12px;
+}
+
+.yacht-parallax-cont header .inner > svg {
+	font-size: 24px;
+}
+
+/* Widgets */
+
+.yacht-parallax-cont .TopHero {
+	position: relative;
+	z-index: 2;
+	margin-top: 0;
+	display: grid;
+	grid-template-areas: "stack";
+	height: 100vh;
+	height: 100svh;
+	height: 100dvh;
+	border-radius: 0 0 32px 32px;
+	overflow: clip;
+	margin-inline: auto;
+	min-width: 100%;
+}
+
+.yacht-parallax-cont .TopHero .bg-mask {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.yacht-parallax-cont .TopHero .media-cont {
+	background-color: white;
+	grid-area: stack;
+	width: 100%;
+	height: 100%;
+	min-height: 700px;
+}
+
+.yacht-parallax-cont .TopHero .media video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.yacht-parallax-cont .TopHero .inner {
+	position: relative;
+	margin-inline: auto;
+	min-width: 100%;
+	z-index: 2;
+	overflow-x: clip;
+	grid-area: stack;
+	display: flex;
+	flex-direction: column-reverse;
+	min-width: 100%;
+	max-height: calc(100vh - 30px);
+	max-height: calc(100svh - 30px);
+	padding-inline: 15px;
+	margin-block: 15px;
+	margin-top: 0px;
+}
+
+.yacht-parallax-cont .TopHero .content-left {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	row-gap: 16px;
+	margin-top: auto;
+	color: white;
+}
+
+.yacht-parallax-cont .TopHero .content-left .title {
+	font-family: var(--pn-font-header);
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 56px;
+}
+
+.yacht-parallax-cont .TopHero .content-left .subtitle {
+	font-family: var(--yb-font-body);
+	font-size: 18px;
+	line-height: 22px;
+}
+
+.yacht-parallax-cont .IconBanner {
+	position: relative;
+	background-color: white;
+	margin-inline: auto;
+	min-width: 100%;
+	z-index: 1;
+	overflow-x: clip;
+}
+
+.yacht-parallax-cont .IconBanner .inner-cont {
+	max-width: 1440px;
+	margin-inline: auto;
+	padding-block: 64px;
+	padding-inline: 16px;
+}
+
+.yacht-parallax-cont .IconBanner .title-cont {
+	text-align: center;
+	margin: auto;
+}
+
+.yacht-parallax-cont .IconBanner .title-cont .title {
+	font-family: var(--yb-font-header);
+	font-size: 48px;
+	line-height: 56px;
+	font-weight: 700;
+}
+
+.yacht-parallax-cont .IconBanner .title-cont .subtitle {
+	font-family: var(--yb-font-body);
+	font-size: 18px;
+	line-height: 22px;
+}
+
+.yacht-parallax-cont .IconBanner .icon-cont-outer {
+	margin-top: 24px;
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	gap: 8px;
+	max-width: max-content;
+	margin-inline: auto;
+}
+
+.yacht-parallax-cont .IconBanner .icon-cont-outer .icon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .9rem;
+	padding-block: 16px;
+	padding-inline: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid rgb(224,224,225);
+	cursor: pointer;
+	transition: background-color .3s cubic-bezier(.215,.61,.355,1);
+	font-size: 14px;
+}
+
+.yacht-parallax-cont .IconBanner .icon-cont-outer .icon svg {
+	color: white;
+	width: 48px;
+	height: 48px;
+	padding: 12px;
+	border-radius: 999px;
+	margin-inline: auto;
+	text-align: center;
+}
+.yacht-parallax-cont .IconBanner .icon-cont-outer .icon:nth-child(1) svg {
+	background-color: rgb(136,157,30);
+}
+.yacht-parallax-cont .IconBanner .icon-cont-outer .icon:nth-child(2) svg {
+	background-color: rgb(255, 173, 41);
+}
+.yacht-parallax-cont .IconBanner .icon-cont-outer .icon:nth-child(3) svg {
+	background-color: rgb(114,25,49);
+}
+.yacht-parallax-cont .IconBanner .icon-cont-outer .icon:nth-child(4) svg {
+	background-color: rgb(7,158,165);
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont {
+	z-index: 0;
+	position: sticky;
+	top: 0;
+	margin-top: -100svh;
+	min-height: 100vh;
+	min-height: 100svh;
+	overflow: visible;
+	display: grid;
+	grid-template-columns: 1fr;
+	padding-inline: 16px;
+	padding-block: 80px 40px;
+	margin-inline: auto;
+	min-width: 100%;
+}
+
+.yacht-parallax-cont .VideoSideScroller .video-card .video-cont {
+	isolation: isolate;
+	position: absolute;
+	inset: 0;
+	overflow: clip;
+}
+
+.yacht-parallax-cont .VideoSideScroller .video-card .video-cont video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.yacht-parallax-cont .VideoSideScroller .empty-reveal-cont {
+	height: 150vh;
+	height: 150svh;
+	pointer-events: none;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont {
+	max-width: 344px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-self: start;
+	align-items: center;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont .title {
+	font-family: var(--yb-font-header);
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 52px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont .subtitle {
+	font-family: var(--yb-font-body);
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont {
+	position: relative;
+	overflow-y: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	margin-block: 32px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .first-card {
+	display: none;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	gap: 16px;
+	grid-auto-rows: 132px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .card {
+	grid-row: span 1;
+	position: relative;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .card .video-card {
+	--activeClipPath: inset(4px round 13px);
+	position: relative;
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	padding: 12px;
+	gap: 10px;
+	background: rgb(224,224,225);
+	border-radius: 16px;
+	height: 100%;
+	width: 100%;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .video-card .bg-mask {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(0deg,rgba(0,0,0,.75) 0,rgba(0,0,0,0) 33%,rgba(0,0,0,0) 100%);
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .video-card .title {
+	position: relative;
+	color: rgb(255,255,255);
+	text-align: start;
+	font-family: var(--yb-font-header);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 {
+	position: relative;
+	overflow: clip;
+	border-radius: 32px;
+	margin-inline: auto;
+	min-width: 100%;
+	background-color: #b0ede6;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .top-title-cont {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	height: fit-content;
+	padding-block: 48px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(176,237,230);
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .top-title-cont .title {
+	display: inline-block;
+	margin-top: 32px;
+	font-family: var(--yb-font-header);
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 52px;
+	text-decoration: none;
+	letter-spacing: normal;
+	text-align: center;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .top-title-cont button {
+	position: relative;
+	overflow: hidden;
+	overflow: clip;
+	background: black;
+	color: white;
+	box-shadow: 0 0 0 1px black inset;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	height: 48px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--yb-font-body);
+	font-style: normal;
+	font-weight: 700;
+	width: fit-content;
+	margin-top: 24px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont {
+	background-color: rgb(176,237,230);
+	position: relative;
+	padding-inline: 16px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont .card {
+	display: flex;
+	position: relative;
+	isolation: isolate;
+	aspect-ratio: 762/410;
+	border-radius: 16px;
+	overflow: clip;
+	width: 100%;
+	height: auto;
+	background-color: lightgray;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont .video-card {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: end;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont .card .title {
+	display: block;
+	position: relative;
+	font-family: var(--yb-font-header);
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 36px;
+	text-decoration: none;
+	letter-spacing: normal;
+	line-height: normal;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	margin-top: auto;
+	padding: 16px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .top-title-cont .title {
+	font-family: var(--yb-font-header);
+	font-weight: 700;
+	font-size: 60px;
+	line-height: 64px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont .card.placeholder-card {
+	position: relative;
+	aspect-ratio: 762/210;
+	background-color: transparent;
+}
+
+.yacht-parallax-cont .LayeredCards {
+	/* padding-bottom: 48px; */
+}
+
+.yacht-parallax-cont .LayeredCards .top-title-cont {
+	padding: 40px 16px 32px;
+}
+
+.yacht-parallax-cont .LayeredCards .top-title-cont .title {
+	font-family: var(--yb-font-header);
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 52px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .LayeredCards .top-title-cont button {
+	position: relative;
+	overflow: hidden;
+	overflow: clip;
+	color: black;
+	box-shadow: 0 0 0 1px black inset;
+	background-color: #fff;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	height: 48px;
+	margin-top: 24px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 {
+	isolation: isolate;
+	background: white;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont {
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	padding-inline: 16px;
+	padding-block: 48px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .title {
+	font-family: var(--yb-font-header);
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 52px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-content {
+	padding: 0;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-title {
+	font-family: var(--yb-font-header);
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-wrapper button {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	overflow: clip;
+	background: black;
+	color: white;
+	box-shadow: 0 0 0 1px black inset;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	height: 44px;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--yb-font-body);
+	font-style: normal;
+	font-weight: 700;
+	width: fit-content;
+	transition: all .3s ease;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-images-container  {
+	margin-top: 32px;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .title-card-cont  {
+	display: flex;
+	flex-direction: row;
+	overflow-x: auto;
+	overflow-y: hidden;
+	margin-top: 1rem;
+	cursor: grab;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	user-select: none;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .title-card-cont::-webkit-scrollbar {
+	display: none;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .title-card-cont:active {
+	cursor: grabbing;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .title-card-cont .title-card {
+	display: inline-block;
+	margin-right: 5%;
+	white-space: nowrap;
+	font-family: var(--yb-font-body);
+	flex-shrink: 0;
+}
+
+.yacht-parallax-cont .VideoSideScroller.item-4 .title-card-cont .title-card.active {
+	font-weight: bold;
+}
+
+.yacht-parallax-cont .EventSideScroller .title {
+	font-family: var(--yb-font-header);
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 52px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-header-container button {
+	position: relative;
+	overflow: hidden;
+	overflow: clip;
+	color: black;
+	box-shadow: 0 0 0 1px black inset;
+	background-color: #fff;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	height: 44px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--yb-font-body);
+	font-style: normal;
+	font-weight: 700;
+	width: fit-content;
+	transition: all .3s ease;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-inner {
+	font-family: var(--yb-font-body);
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-dates {
+	display: flex;
+	gap: .3rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-dates .date-card {
+	display: flex;
+	gap: .3rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-dates .day {
+	font-family: var(--yb-font-body);
+	font-size: 32px;
+	line-height: 38px;
+	text-decoration: none;
+	letter-spacing: normal;
+	font-weight: 700;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-dates .inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--yb-font-body);
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-dates .inner .month {
+	font-family: var(--yb-font-body);
+	font-size: 16px;
+	font-style: normal;
+	line-height: 27px;
+	letter-spacing: .64px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.yacht-parallax-cont .EventSideScroller .event-card-dates .hyphen {
+	width: 16px;
+	height: 3.5px;
+	background: white;
+}
+
+.yacht-parallax-cont .ThreeCardAcross {
+	font-family: var(--yb-font-body);
+}
+
+.yacht-parallax-cont .ThreeCardAcross .three-card-header h2 {
+	font-family: var(--yb-font-header);
+}
+
+.yacht-parallax-cont .ClickSlider {
+	font-family: var(--yb-font-body);
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-title {
+	font-family: var(--yb-font-header);
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-header button {
+	position: relative;
+	overflow: hidden;
+	overflow: clip;
+	color: black;
+	box-shadow: 0 0 0 1px black inset;
+	background-color: #fff;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	height: 48px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--yb-font-body);
+	font-style: normal;
+	font-weight: 700;
+	width: fit-content;
+	transition: all .3s ease;
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-swiper-container .click-slider-card-inner :is(h2) {
+	font-family: var(--yb-font-body) !important;
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-card .content .row-top {
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 22px;
+	letter-spacing: .56px;
+	text-transform: uppercase;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	flex: 1;
+	width: 100%;
+	gap: 8px;
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-card .content .row-top .subtitle {
+	font-size: min(3vw, 14px);
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-card .date-card {
+	font-family: var(--yb-font-body);
+	display: flex;
+	gap: 5%;
+	align-items: center;
+	padding: 12px 16px;
+}
+
+.yacht-parallax-cont .ClickSlider .click-slider-card .date-card .inner {
+	display: flex;
+	gap: 5%;
+}
+
+.yacht-parallax-cont .CTAButtons h2 {
+	font-family: var(--yb-font-body);
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 56px;
+	text-decoration: none;
+	letter-spacing: normal;
+}
+
+.yacht-parallax-cont .CTAButtons .cta-icon-card {
+	display: flex;
+	justify-content: space-between;
+	padding: 21px 20px;
+	font-size: 18px;
+	height: 48px;
+	min-width: 100%;
+	background: white;
+	color: black;
+	box-shadow: 0 0 0 1px white inset;
+	border-radius: 16px;
+}
+
+.yacht-parallax-cont .CTAButtons .cta-icon-card:hover,
+.yacht-parallax-cont .CTAButtons .cta-icon-card:hover :is(span, svg) {
+	color: white !important;
+	border-width: 0 !important;
+	background-color: black;
+	box-shadow: 0 0 0 1px black inset;
+	cursor: pointer;
+}
+
+.yacht-parallax-cont .sailboat {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.yacht-parallax-cont header {
+		height: 65px;
+		padding: 16px 22px;
+	}
+	.yacht-parallax-cont .TopHero .inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 32px;
+		align-items: end;
+		padding-inline: 40px;
+		padding-bottom: 40px;
+	}
+	.yacht-parallax-cont .TopHero .content-left .title {
+		font-weight: 400;
+		font-size: 88px;
+		line-height: 92px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .TopHero .content-left .subtitle {
+		font-weight: 500;
+		font-size: 28px;
+		line-height: 32px;
+		text-decoration: none;
+		letter-spacing: -1%;
+		letter-spacing: -.36px;
+	}
+
+	.yacht-parallax-cont .IconBanner .title-cont .title {
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 64px;
+	}
+
+	.yacht-parallax-cont .IconBanner .title-cont .subtitle {
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .IconBanner .icon-cont-outer .icon {
+		padding-block: 32px;
+		padding-inline: 40px;
+		border-radius: 16px;
+		font-size: 16px;
+	}
+
+	.yacht-parallax-cont .IconBanner .icon-cont-outer .icon svg {
+		width: 64px;
+		height: 64px;
+		padding: 12px;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont {
+		padding-top: unset;
+		grid-template-columns: repeat(2,1fr);
+		padding-inline: 32px;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont {
+		margin-top: 164px;
+		position: sticky;
+		top: 164px;
+		align-items: flex-start;
+		text-align: start;
+		max-width: 370px;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont .title {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 64px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont .subtitle {
+		font-family: var(--yb-font-body);
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 26px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .sailboat {
+		display: block;
+		width: 150px;
+		height: auto;
+		position: absolute;
+		top: 150%;
+		left: 50%;
+		animation: sailboatFloat 2.5s linear infinite;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: crisp-edges;
+	}
+
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont {
+		display: flex;
+		flex-direction: column;
+		width: 47vw;
+		position: relative;
+		overflow-y: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		margin-top: -16vh;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards {
+		grid-template-columns: 1fr;
+		gap: 24px;
+		grid-auto-rows: 1fr;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .card .title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 26px;
+		line-height: 30px;
+		text-decoration: none;
+		letter-spacing: 0;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .first-card {
+		padding: 24px;
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+		align-items: center;
+		justify-content: center;
+		background-color: rgb(var(--white));
+		text-wrap: balance;
+		height: 23vh;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont .card.placeholder-card {
+		height: 25vh;
+		width: 100%;
+		aspect-ratio: unset;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-2 .cards-cont .card .title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 48px;
+		line-height: 52px;
+		text-decoration: none;
+		letter-spacing: normal;
+		line-height: normal;
+		padding: 32px;
+	}
+
+	.yacht-parallax-cont .LayeredCards .layered-card-item {
+		position: sticky;
+		top: 32px;
+	}
+
+	.yacht-parallax-cont .LayeredCards .top-title-cont {
+		padding: 80px 32px 32px;
+	}
+
+	.yacht-parallax-cont .LayeredCards .title {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 64px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .LayeredCards .layered-card-item .title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 48px;
+		line-height: 52px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .LayeredCards .layered-card-item .subtitle {
+		font-family: var(--yb-font-body);
+		font-size: 28px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 32px;
+		letter-spacing: 1.12px;
+		text-transform: uppercase;
+	}
+
+	.yacht-parallax-cont .LayeredCards .layered-card-item .button {
+		background: white;
+		color: black;
+		box-shadow: 0 0 0 1px white inset;
+		font-size: 18px;
+		line-height: 18px;
+		padding: 12px 16px;
+		border-radius: 8px;
+		height: 48px;
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+		font-family: var(--yb-font-body);
+		font-style: normal;
+		font-weight: 700;
+		width: fit-content;
+		transition: all .3s ease;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .top-title-cont .title {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 64px;
+		text-decoration: none;
+		letter-spacing: normal;
+		max-width: 60%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-title {
+		font-family: var(--yb-font-header);
+		font-weight: 500;
+		font-size: 32px;
+		line-height: 38px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-description {
+		font-family: var(--yb-font-body);
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 26px;
+		text-decoration: none;
+		letter-spacing: normal;
+		max-width: 90%;
+	}
+
+	.yacht-parallax-cont .EventSideScroller {
+		padding: 48px 32px !important;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-header-container .inner {
+		order: 1;
+		grid-template-columns: 1fr;
+		position: sticky;
+		top: 0;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-header-container .inner .sailboat {
+		width: 150px;
+		height: auto;
+		animation: 2.5s linear infinite sailboatFloat;
+		position: absolute;
+		top: 78%;
+		left: 49%;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .grid-cont {
+		row-gap: 64px;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card-inner {
+		width: 57%;
+		padding: 23px;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card-title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 29px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card-link {
+		font-size: 14px;
+		line-height: 14px;
+		padding: 8px 16px;
+		border-radius: 8px;
+		height: 36px;
+		text-decoration: none;
+	}
+
+	.yacht-parallax-cont .ThreeCardAcross .three-card-header {
+		padding-top: 16px;
+		padding-inline: 32px;
+		margin-top: 3rem;
+	}
+
+	.yacht-parallax-cont .ThreeCardAcross .three-card-header h2 {
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 64px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .ThreeCardAcross .three-card-header p {
+		font-family: var(--yb-font-body);
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 33px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .ThreeCardAcross .standard-card-title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 29px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .ThreeCardAcross .standard-card-content-inner {
+		gap: 12px;
+	}
+
+	.yacht-parallax-cont .ClickSlider {
+		padding-top: 48px;
+	}
+
+	.yacht-parallax-cont .ClickSlider .click-slider-title {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 64px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .ClickSlider .click-slider-card .content .row-top {
+		display: flex;
+		justify-content: space-between;
+		font-family: var(--yb-font-body);
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 27px;
+		letter-spacing: .64px;
+		text-transform: uppercase;
+	}
+
+	.yacht-parallax-cont .ClickSlider .click-slider-card .subtitle {
+		font-family: var(--yb-font-body);
+	}
+
+
+	.yacht-parallax-cont .ClickSlider .click-slider-card .card-title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 29px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .ClickSlider .click-slider-card .content .row-bottom button {
+		font-family: var(--yb-font-body);
+		font-size: 16px;
+		line-height: 16px;
+		border-radius: 8px;
+		height: 44px;
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+		font-family: var(--fontBody);
+		font-style: normal;
+		font-weight: 700;
+		width: fit-content;
+		transition: all .3s ease;
+	}
+
+	.yacht-parallax-cont .ClickSlider .click-slider-card .content > .inner {
+		padding: 12px 16px;
+	}
+
+	.yacht-parallax-cont .CTAButtons {
+		margin-top: -60vh;
+	}
+
+	.yacht-parallax-cont .CTAButtons .inner {
+		position: sticky;
+		bottom: 0;
+		background-color: orangered;
+		height: 60vh;
+		width: 100%;
+		padding: 5%;
+	}
+
+	.yacht-parallax-cont .CTAButtons .curtain {
+		display: block;
+		height: 60vh;
+
+	}
+
+	.yacht-parallax-cont .CTAButtons h2 {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 88px;
+		line-height: 92px;
+		text-decoration: none;
+		letter-spacing: normal;
+		color: white;
+	}
+}
+
+@media (min-width: 1024px) {
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .top-title-cont {
+		padding-bottom: 35%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .sailboat {
+		top: 65%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont {
+		width: 59vw;
+		margin-top: 3vh;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards {
+		display: grid;
+		grid-template-columns: repeat(2,1fr);
+		gap: 24px;
+		grid-auto-rows: 1fr;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .card {
+		grid-row: span 2;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-1 .outer-cont .cards-cont .cards .first-card {
+		height: 16vh;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-2 .outer-cont {
+		/* margin-inline: unset; */
+		display: grid;
+		grid-template-columns: 1fr 1.16fr;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-2 .top-title-cont {
+		padding: 0;
+		top: 20%;
+		justify-content: start;
+		max-width: 545px;
+		padding-inline-start: 20%;
+		padding-block: 10%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-2 .top-title-cont .title {
+		text-align: left;
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 72px;
+		line-height: 87px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-2 .top-title-cont button {
+		margin-right: auto;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .video-layered-cards-template-title {
+		max-width: 95%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .video-layered-cards-images-container {
+		aspect-ratio: unset;
+		overflow: clip;
+		touch-action: unset;
+		position: sticky;
+		top: 0;
+		height: 100%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .video-layered-card-image-item {
+		height: 90svh;
+		overflow: hidden;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .video-layered-card-image-media {
+		height: 90svh;
+		position: sticky;
+		top: 0;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-images-container {
+		margin-top: 0;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .video-layered-cards-left-column {
+		position: sticky;
+		top: 0;
+		padding: 3rem 1rem 0 3rem;
+		height: 90svh;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .outer-cont .content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
+
+	.yacht-parallax-cont .VideoSideScroller.item-4 .video-layered-cards-wrapper.desktop-layout {
+		gap: 0;
+	}
+
+	.yacht-parallax-cont .LayeredCards .top-title-cont .title {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 72px;
+		line-height: 87px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .LayeredCards .layered-card-item {
+		height: calc(100vh - 64px);
+		width: 100%;
+	}
+
+	.yacht-parallax-cont .LayeredCards .layered-cards-wrapper {
+		margin-top: 0;
+	}
+
+	.yacht-parallax-cont .EventSideScroller {
+		position: relative;
+		margin-inline: auto;
+		min-width: 100%;
+		z-index: 1;
+		overflow-x: clip;
+		row-gap: 64px;
+		padding: 48px 32px!important;
+		column-gap: 64px;
+		grid-template-columns: repeat(2,1fr);
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card {
+		height: 36vh;
+		padding: 16px;
+		max-height: 230px;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card .content {
+		width: 65.4%;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card-inner {
+		width: 100%;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-header-container {
+		padding: 15% 0;
+		padding-inline-start: 8%;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-header-container .title {
+		font-family: var(--yb-font-header);
+		font-weight: 400;
+		font-size: 72px;
+		line-height: 87px;
+		text-decoration: none;
+		letter-spacing: normal;
+		max-width: 435px;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .event-card-title {
+		font-family: var(--yb-font-header);
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 29px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .date-card .day {
+		font-family: var(--yb-font-body);
+		font-size: 44px;
+		line-height: 53px;
+		text-decoration: none;
+		letter-spacing: normal;
+		font-weight: 700;
+	}
+
+	.yacht-parallax-cont .EventSideScroller .date-card .inner {
+		font-family: var(--yb-font-body);
+		font-size: 18px;
+		font-style: normal;
+		line-height: 27px;
+		letter-spacing: .72px;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	.yacht-parallax-cont .ClickSlider .click-slider-header {
+		padding: 0 0 0 15%;
+	}
+}
