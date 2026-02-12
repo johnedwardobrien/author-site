@@ -23,6 +23,7 @@ import { getServerSideURL } from './utilities/getURL'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import nodemailer from 'nodemailer'
 import { SESv2, SendEmailCommand } from '@aws-sdk/client-sesv2'
+import { seed } from './utilities/seed'
 
 const sesClient = new SESv2({
   region: 'us-east-1',
@@ -142,5 +143,10 @@ export default buildConfig({
       },
     },
     tasks: [],
+  },
+  onInit: async (args) => {
+    if (process.env.SEED_DB) {
+      await seed(args)
+    }
   },
 })
