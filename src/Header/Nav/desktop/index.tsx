@@ -51,6 +51,7 @@ export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; 
   return (
     <motion.nav
       className="nav nav-links desktop"
+      initial={{ translateY: '-100%' }}
       animate={isDesktop ? {
         transform: scrollDirection === 'down' ? 'translateY(-100%)' : 'translateY(0)'
       } : {}}

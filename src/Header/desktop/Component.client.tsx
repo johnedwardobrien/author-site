@@ -79,6 +79,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
           <div className="header-title">
             <Link href="/books">
               <motion.div
+                initial={{ scale: 1, padding: '.25rem 0' }}
                 animate={{
                   scale: scrollDirection === 'down' ? 1 : 0.8,
                   paddingTop: scrollDirection === 'down' ? '0.25rem' : '0',
@@ -96,6 +97,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
               }}
             >
               <motion.div
+                initial={{ scale: 0 }}
                 animate={{ scale: scrollDirection === 'down' ? 0 : 1 }}
                 transition={{ duration: 0.2, ease: easeIn }}
               >

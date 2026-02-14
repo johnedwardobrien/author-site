@@ -223,7 +223,7 @@ export interface Page {
   header?: ('main' | 'chat' | 'empty') | null;
   footer?: ('main' | 'chat' | 'empty') | null;
   theme?: ('none' | 'chat-window' | 'yacht-bazaar') | null;
-  favicon?: ('none' | 'code.ico') | null;
+  favicon?: ('none' | 'code.ico' | 'quill.png') | null;
   publishedAt?: string | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
