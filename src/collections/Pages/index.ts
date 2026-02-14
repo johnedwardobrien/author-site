@@ -201,6 +201,10 @@ export const Pages: CollectionConfig<'pages'> = {
                   label: 'Code',
                   value: 'code.ico',
                 },
+                {
+                  label: 'Quill',
+                  value: 'quill.png',
+                },
               ],
               defaultValue: 'none',
             },
