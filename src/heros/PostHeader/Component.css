@@ -1,0 +1,39 @@
+.post-header {
+	width: 90vw;
+    max-width: 1080px;
+    margin: 5em auto 0;
+}
+
+.post-header .inner {
+	display: flex;
+	flex-direction: column;
+	gap: .2rem;
+	margin: 0 auto;
+	margin-top: 5em;
+}
+
+.post-header :is(.categories-cont, p, time) {
+	font-family: var(--source-serif-font);
+}
+
+.post-header h1 {
+	font-weight: 700;
+	color: black;
+	font-size: min(9vw, 3rem);
+}
+
+@media (min-width: 48em) {
+	.post-header .inner {
+		width: 60%;
+		max-width: 660px;
+		margin-bottom: 3rem;
+		margin-top: 8em;
+	}
+}
+
+@media (min-width: 62em) {
+	.post-header {
+		margin-bottom: 3rem;
+		margin-top: 10em;
+	}
+}

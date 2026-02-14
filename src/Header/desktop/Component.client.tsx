@@ -77,7 +77,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
         className='inner'
       >
           <div className="header-title">
-            <Link href="/">
+            <Link href="/books">
               <motion.div
                 animate={{
                   scale: scrollDirection === 'down' ? 1 : 0.8,

@@ -1,0 +1,21 @@
+.collection-archive {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin: 3em 0;
+}
+
+@media (min-width: 768px) {
+    .collection-archive {
+        width: 80%;
+        margin: 2rem auto;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .collection-archive {
+        width: 75%;
+    }
+}

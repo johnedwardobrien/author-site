@@ -13,6 +13,7 @@ import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
+import './Component.css'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -47,7 +48,7 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug } = await paramsPromise
-  const url = '/' + slug
+  const url = (slug === '/' || !slug) ? '/' : '/' + slug
   let page: RequiredDataFromCollectionSlug<'pages'> | null
 
   page = await queryPageBySlug({

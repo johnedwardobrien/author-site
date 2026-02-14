@@ -4,6 +4,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import RichText from '@/components/RichText'
+import './Component.css'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 
@@ -30,6 +31,7 @@ export const ArchiveBlock: React.FC<
       collection: 'posts',
       depth: 1,
       limit,
+      sort: '-createdAt',
       ...(flattenedCategories && flattenedCategories.length > 0
         ? {
             where: {
@@ -53,10 +55,10 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="my-16" id={`block-${id}`}>
+    <div className="collection-archive" id={`block-${id}`}>
       {introContent && (
-        <div className="container mb-16">
-          <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
+        <div className="header-text">
+          <RichText className="text" data={introContent} enableGutter={false} />
         </div>
       )}
       <CollectionArchive posts={posts} />
