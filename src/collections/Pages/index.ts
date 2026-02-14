@@ -6,6 +6,7 @@ import { AnimationBlock } from '../../blocks/AnimationBlock/config'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
+import { Banner } from '../../blocks/Banner/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { SideTabPanel } from '../../blocks/SideTabPanel/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
@@ -84,6 +85,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 MediaBlock,
                 Archive,
                 FormBlock,
+                Banner,
                 SideTabPanel,
                 ChatWindow,
                 ContentChat,
