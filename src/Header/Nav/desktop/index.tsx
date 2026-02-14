@@ -63,8 +63,8 @@ export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; 
 
         const isActive = active === linkUrl
 
-        return <div className='nav-link-cont'>
-            <CMSLink key={i} {...link} appearance="link" className={isActive ? 'active' : ''} />
+        return <div key={i} className='nav-link-cont'>
+            <CMSLink {...link} appearance="link" className={isActive ? 'active' : ''} />
             <ArrowRight />
         </div>
       })}

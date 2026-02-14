@@ -11,6 +11,7 @@ import {
 
 import { link } from '@/fields/link'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { Subscribe } from '@/blocks/Subscribe/config'
 
 const TextBlock: Block = {
   slug: 'textBlock',
@@ -94,7 +95,7 @@ export const Content: Block = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [TextBlock, MediaBlock],
+      blocks: [TextBlock, MediaBlock, Subscribe],
       admin: {
         initCollapsed: true,
       },

@@ -273,7 +273,7 @@ export interface Post {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
-  blocks?: (TextBlock | MediaBlock)[] | null;
+  blocks?: (TextBlock | MediaBlock | SubscribeBlock)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -429,6 +429,15 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SubscribeBlock".
+ */
+export interface SubscribeBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'subscribe';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1341,6 +1350,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
     | {
         textBlock?: T | TextBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
+        subscribe?: T | SubscribeBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
@@ -1373,6 +1383,14 @@ export interface TextBlockSelect<T extends boolean = true> {
  */
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SubscribeBlock_select".
+ */
+export interface SubscribeBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

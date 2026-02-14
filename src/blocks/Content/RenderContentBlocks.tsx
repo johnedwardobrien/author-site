@@ -4,10 +4,12 @@ import type { ContentBlock } from '@/payload-types'
 
 import { TextBlock } from './blocks/TextBlock'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { SubscribeBlock } from '@/blocks/Subscribe/Component'
 
 const blockComponents = {
   textBlock: TextBlock,
   mediaBlock: MediaBlock,
+  subscribe: SubscribeBlock,
 }
 
 export const RenderContentBlocks: React.FC<{
