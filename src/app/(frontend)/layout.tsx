@@ -9,6 +9,8 @@ import {
   Zalando_Sans,
   Google_Sans_Code,
   MedievalSharp,
+  Lora,
+  Source_Serif_4
 } from 'next/font/google'
 import React, { cache } from 'react'
 
@@ -20,14 +22,8 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const FigtreeFont = Figtree({
-  variable: '--yb-font-body',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const PlusJakartaSansFont = Plus_Jakarta_Sans({
-  variable: '--yb-font-header',
+const SourceSerif4 = Source_Serif_4({
+  variable: '--source-serif-font',
   subsets: ['latin'],
   display: 'swap',
 })
@@ -60,8 +56,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={cn(
         GeistSans.variable,
         GeistMono.variable,
-        FigtreeFont.variable,
-        PlusJakartaSansFont.variable,
+        SourceSerif4.variable,
         ZalandoSans.variable,
         GoogleSansCode.variable,
         MedievalSharpFont.variable,

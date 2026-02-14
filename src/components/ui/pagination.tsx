@@ -1,6 +1,5 @@
 import type { ButtonProps } from '@/components/ui/button'
 
-import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 import * as React from 'react'
@@ -33,10 +32,8 @@ const PaginationLink = ({ className, isActive, size = 'icon', ...props }: Pagina
   <button
     aria-current={isActive ? 'page' : undefined}
     className={cn(
-      buttonVariants({
-        size,
-        variant: isActive ? 'outline' : 'ghost',
-      }),
+      size,
+      isActive ? 'outline' : 'ghost',
       className,
     )}
     {...props}
