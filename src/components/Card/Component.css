@@ -6,8 +6,15 @@
 	border: 1px solid lightgray !important;
 	border-radius: 24px;
 	overflow: hidden;
+	width: 100%;
 }
 
 .card-cont .card-content-cont {
 	padding: .5rem;
+	width:100%;
+}
+
+.card-cont .card-image {
+	width: 100%;
+	height: auto;
 }

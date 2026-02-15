@@ -1,8 +1,36 @@
-.collection-archive h1 {
+
+.collection-archive-cont {
+	width: 100%;
+}
+
+.collection-archive-cont .inner {
+	width: 100%;
 	margin: 0 1rem;
 }
 
-.collection-archive-cont {
+.collection-archive-cont .slick-slider {
+	width: 100% !important;
+}
+
+.collection-archive-cont .slick-list {
+	width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.collection-archive-cont .slick-track {
+	width: 100% !important;
+	display: flex;
+}
+
+.collection-archive-cont .slick-slide {
+	display: block;
+	box-sizing: border-box;
+	padding: 0 !important;
+	margin: 0 1rem !important;
+}
+
+.collection-archive h1 {
 	margin: 0 1rem;
 }
 

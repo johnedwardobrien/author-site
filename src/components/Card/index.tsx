@@ -31,13 +31,7 @@ export const Card: React.FC<{
   const href = `/${relationTo}/${slug}`
 
   return (
-    <article
-      className={cn(
-        'card-cont',
-        className,
-      )}
-      ref={card.ref}
-    >
+    <article className={cn('card-cont', className)} ref={card.ref}>
       <div className="card-image">
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
