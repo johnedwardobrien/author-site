@@ -48,7 +48,7 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug } = await paramsPromise
-  const url = (slug === '/' || !slug) ? '/' : '/' + slug
+  const url = slug === '/' || !slug ? '/' : '/' + slug
   let page: RequiredDataFromCollectionSlug<'pages'> | null
 
   page = await queryPageBySlug({
@@ -63,7 +63,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <>
-      {header && <Header/>}
+      {header && <Header />}
       <div className="root-page" data-custom-theme={theme || undefined}>
         <PageClient />
         {/* Allows redirects for valid pages too */}
@@ -74,7 +74,7 @@ export default async function Page({ params: paramsPromise }: Args) {
         <RenderHero {...hero} />
         <RenderBlocks blocks={layout} />
       </div>
-      {footer && <Footer/>}
+      {footer && <Footer />}
     </>
   )
 }
@@ -85,7 +85,10 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     slug,
   })
 
-  return generateMeta({ doc: page })
+  return generateMeta({
+    doc: page,
+    path: slug === '/' || !slug || slug === 'home' ? '/' : `/${slug}`,
+  })
 }
 
 const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
