@@ -8,3 +8,7 @@
 	box-shadow: 1px solid black;
 }
 
+.collection-archive-cont .prose h3 {
+	line-height: 125%;
+}
+
