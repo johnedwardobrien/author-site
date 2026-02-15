@@ -244,6 +244,7 @@ export interface Post {
   layout: ContentBlock[];
   relatedPosts?: (string | Post)[] | null;
   categories?: (string | Category)[] | null;
+  favicon?: ('none' | 'code.ico' | 'quill.png') | null;
   meta?: {
     title?: string | null;
     /**
@@ -1554,6 +1555,7 @@ export interface PostsSelect<T extends boolean = true> {
       };
   relatedPosts?: T;
   categories?: T;
+  favicon?: T;
   meta?:
     | T
     | {

@@ -2,7 +2,7 @@
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import type { Header } from '@/payload-types'
 
@@ -26,6 +26,9 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [isDesktop, setIsDesktop] = useState(false)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+
+  const headerRef = useRef<HTMLElement>(null)
+  const allowScrollAnimateRef = useRef(true)
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -51,10 +54,20 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
     let lastScrollY = window.scrollY
 
     const handleScroll = () => {
+      const isHovering = headerRef.current?.matches(':hover') ?? false
+
+      if (isHovering) {
+        setScrollDirection('up')
+        allowScrollAnimateRef.current = false
+        return
+      }
+
+      if (!allowScrollAnimateRef.current) return
+
       const currentScrollY = window.scrollY
       if (currentScrollY > lastScrollY) {
         setScrollDirection('down')
-      } else if (currentScrollY < lastScrollY) {
+      } else if (currentScrollY < lastScrollY && scrollDirection !== 'up') {
         setScrollDirection('up')
       }
       lastScrollY = currentScrollY
@@ -66,12 +79,16 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <motion.header
+      ref={headerRef}
       className={`nav-container desktop ${hamburgerOpen ? 'mobile-menu-active' : ''}`}
       {...(theme ? { 'data-theme': theme, } : {})}
       animate={isDesktop ? {
         backgroundColor: scrollDirection === 'up' ? 'rgb(224,224,225)' : 'transparent'
       } : {}}
       transition={{ duration: 0.2, ease: easeIn }}
+      onMouseLeave={() => {
+        allowScrollAnimateRef.current = true
+      }}
     >
       <div
         className='inner'
@@ -106,7 +123,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
               </motion.div>
             </div>
           </div>
-          <HeaderDesktopNav data={data} />
+          <HeaderDesktopNav data={data} scrollDirection={scrollDirection} />
       </div>
     </motion.header>
   )

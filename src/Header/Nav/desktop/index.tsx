@@ -10,11 +10,10 @@ import { ArrowRight, SearchIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { easeIn, motion } from 'framer-motion'
 
-export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; }> = ({ data, className }) => {
+export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; scrollDirection: 'up' | 'down'; }> = ({ data, className, scrollDirection }) => {
   const navItems = data?.navItems || []
   const pathname = usePathname()
   const [active, setActive] = useState<string | null>(null)
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down')
   const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
@@ -31,22 +30,7 @@ export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; 
     return () => window.removeEventListener('resize', checkDesktop)
   }, [])
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      if (currentScrollY > lastScrollY) {
-        setScrollDirection('down')
-      } else if (currentScrollY < lastScrollY) {
-        setScrollDirection('up')
-      }
-      lastScrollY = currentScrollY
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <motion.nav
@@ -56,7 +40,6 @@ export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; 
         transform: scrollDirection === 'up' ? 'translateY(0)' : 'translateY(-100%)'
       } : {}}
       transition={isDesktop ? { duration: 0.2, ease: easeIn } : {}}
-      onMouseEnter={() => setScrollDirection('up')}
     >
       {navItems.map(({ link }, i) => {
         const linkUrl = link.type === 'reference' && typeof link.reference?.value === 'object'
