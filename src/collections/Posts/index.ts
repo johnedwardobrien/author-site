@@ -104,6 +104,26 @@ export const Posts: CollectionConfig<'posts'> = {
               hasMany: true,
               relationTo: 'categories',
             },
+            {
+              name: 'favicon',
+              type: 'select',
+              label: 'Favicon',
+              options: [
+                {
+                  label: 'None',
+                  value: 'none',
+                },
+                {
+                  label: 'Code',
+                  value: 'code.ico',
+                },
+                {
+                  label: 'Quill',
+                  value: 'quill.png',
+                },
+              ],
+              defaultValue: 'none',
+            },
           ],
           label: 'Meta',
         },

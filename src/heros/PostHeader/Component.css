@@ -20,6 +20,7 @@
 	font-weight: 700;
 	color: black;
 	font-size: min(9vw, 3rem);
+	line-height: 125%;
 }
 
 @media (min-width: 48em) {
