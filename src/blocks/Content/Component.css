@@ -30,6 +30,7 @@
 
 .content-blocks .prose :is(h1, p) {
 	font-family: var(--source-serif-font);
+	color: black;
 }
 
 .content-blocks .prose p {

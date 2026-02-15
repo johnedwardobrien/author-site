@@ -53,9 +53,10 @@ export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; 
       className="nav nav-links desktop"
       initial={{ translateY: '-100%' }}
       animate={isDesktop ? {
-        transform: scrollDirection === 'down' ? 'translateY(-100%)' : 'translateY(0)'
+        transform: scrollDirection === 'up' ? 'translateY(0)' : 'translateY(-100%)'
       } : {}}
       transition={isDesktop ? { duration: 0.2, ease: easeIn } : {}}
+      onMouseEnter={() => setScrollDirection('up')}
     >
       {navItems.map(({ link }, i) => {
         const linkUrl = link.type === 'reference' && typeof link.reference?.value === 'object'
