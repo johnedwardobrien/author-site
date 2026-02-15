@@ -1,10 +1,9 @@
 "use client"
 
 import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import './Component.css'
 
 import { Card, CardPostData } from '@/components/Card'
@@ -19,37 +18,43 @@ export const CollectionArchive: React.FC<Props> = (props) => {
   return (
     <div className="collection-archive-cont">
       <div className="inner">
-        <Swiper
+        <Slider
           className="collection-archive-swiper"
-          slidesPerView={1}
-          spaceBetween={16}
-          navigation
-          modules={[Navigation]}
-          breakpoints={{
-            768: { slidesPerView: 3, spaceBetween: 24 },
-            1024: { slidesPerView: 4, spaceBetween: 24 },
-          }}
+          slidesToShow={5}
+          slidesToScroll={1}
+          arrows
+          infinite={false}
+          responsive={[
+            {
+              breakpoint: 1024,
+              settings: { slidesToShow: 3, slidesToScroll: 1 },
+            },
+            {
+              breakpoint: 768,
+              settings: { slidesToShow: 1, slidesToScroll: 1 },
+            },
+          ]}
         >
           {posts?.map((result, index) => {
             if (typeof result === 'object' && result !== null) {
               return (
-                <SwiperSlide key={index}>
+                <div key={index}>
                   <Card className="h-full" doc={result} relationTo="posts" showCategories />
-                </SwiperSlide>
+                </div>
               )
             }
             return null
           })}
-        </Swiper>
+        </Slider>
         <style jsx global>{`
-          .collection-archive-cont .swiper-button-prev,
-          .collection-archive-cont .swiper-button-next {
+          .collection-archive-cont .slick-prev,
+          .collection-archive-cont .slick-next {
             display: none;
           }
 
           @media (min-width: 768px) {
-            .collection-archive-cont .swiper-button-prev,
-            .collection-archive-cont .swiper-button-next {
+            .collection-archive-cont .slick-prev,
+            .collection-archive-cont .slick-next {
               display: flex;
             }
           }
