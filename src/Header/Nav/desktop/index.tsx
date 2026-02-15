@@ -14,32 +14,17 @@ export const HeaderDesktopNav: React.FC<{ data: HeaderType; className?: string; 
   const navItems = data?.navItems || []
   const pathname = usePathname()
   const [active, setActive] = useState<string | null>(null)
-  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     setActive(pathname)
   }, [pathname])
 
-  useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth > 980)
-    }
-
-    checkDesktop()
-    window.addEventListener('resize', checkDesktop)
-    return () => window.removeEventListener('resize', checkDesktop)
-  }, [])
-
-
-
   return (
     <motion.nav
       className="nav nav-links desktop"
       initial={{ translateY: '-100%' }}
-      animate={isDesktop ? {
-        transform: scrollDirection === 'up' ? 'translateY(0)' : 'translateY(-100%)'
-      } : {}}
-      transition={isDesktop ? { duration: 0.2, ease: easeIn } : {}}
+      animate={{ transform: scrollDirection === 'up' ? 'translateY(0)' : 'translateY(-100%)' }}
+      transition={{ duration: 0.2, ease: easeIn }}
     >
       {navItems.map(({ link }, i) => {
         const linkUrl = link.type === 'reference' && typeof link.reference?.value === 'object'

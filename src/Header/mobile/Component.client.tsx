@@ -8,7 +8,6 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderMobileNav } from '../Nav/mobile'
-import '../Component.css'
 import { Hamburger } from '@payloadcms/ui'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
