@@ -1,13 +1,12 @@
-.collection-archive {
-	/* width: 90%;
-	margin: 0 auto; */
+.collection-archive .header-title {
+
 }
 
 .collection-archive-cont h1 {
 	margin-left: 1rem;
 }
 
-.collection-archive .header-title h1 {
+.collection-archive .header-text .prose h1 {
 	margin-left: 1rem;
 }
 
