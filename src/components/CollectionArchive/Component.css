@@ -9,7 +9,14 @@
 
 .collection-archive-cont,
 .collection-archive-cont .inner {
-	/* width: 100%; */
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.collection-archive-cont {
+		width: calc(100% - 2rem);
+		margin-inline: auto;
+	}
 }
 
 .collection-archive-cont .swiper-slide {
@@ -18,6 +25,17 @@
 
 .collection-archive-cont .card-cont {
 	min-width: 380px;
+}
+
+@media (max-width: 767px) {
+	.collection-archive-cont .card-cont {
+		min-width: 0;
+		width: 100%;
+	}
+
+	.collection-archive-cont .swiper-slide {
+		box-sizing: border-box;
+	}
 }
 
 .swiper-button-prev,
