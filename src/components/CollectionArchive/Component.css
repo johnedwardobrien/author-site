@@ -7,6 +7,10 @@
 	margin-left: 1rem;
 }
 
+.collection-archive .header-title h1 {
+	margin-left: 1rem;
+}
+
 .collection-archive-cont,
 .collection-archive-cont .inner {
 	width: 100%;
