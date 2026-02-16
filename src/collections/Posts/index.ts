@@ -122,7 +122,7 @@ export const Posts: CollectionConfig<'posts'> = {
                   value: 'quill.png',
                 },
               ],
-              defaultValue: 'none',
+              defaultValue: 'quill.png',
             },
           ],
           label: 'Meta',

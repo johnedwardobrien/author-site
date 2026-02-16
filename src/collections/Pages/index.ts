@@ -206,7 +206,7 @@ export const Pages: CollectionConfig<'pages'> = {
                   value: 'quill.png',
                 },
               ],
-              defaultValue: 'none',
+              defaultValue: 'quill.png',
             },
           ],
         },
