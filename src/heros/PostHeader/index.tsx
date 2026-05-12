@@ -1,14 +1,16 @@
 import { formatDateTime } from 'src/utilities/formatDateTime'
 import React from 'react'
 
-import type { Post } from '@/payload-types'
+import type { Essay, Post, Shard } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
 import './Component.css'
 
+export type ArticleHeaderDoc = Post | Essay | Shard
+
 export const PostHeader: React.FC<{
-  post: Post
+  post: ArticleHeaderDoc
 }> = ({ post }) => {
   const { categories, populatedAuthors, publishedAt, title } = post
 

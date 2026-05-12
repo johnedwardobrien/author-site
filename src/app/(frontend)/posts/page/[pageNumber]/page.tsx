@@ -51,11 +51,11 @@ export default async function Page({ params: paramsPromise }: Args) {
         />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive docs={posts.docs} relationTo="posts" />
 
       <div className="container">
         {posts?.page && posts?.totalPages > 1 && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+          <Pagination basePath="/posts" page={posts.page} totalPages={posts.totalPages} />
         )}
       </div>
     </div>
@@ -76,7 +76,7 @@ export async function generateStaticParams() {
     overrideAccess: false,
   })
 
-  const totalPages = Math.ceil(totalDocs / 10)
+  const totalPages = Math.ceil(totalDocs / 12)
 
   const pages: { pageNumber: string }[] = []
 

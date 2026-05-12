@@ -2,19 +2,23 @@ import clsx from 'clsx'
 import React from 'react'
 import RichText from '@/components/RichText'
 
-import type { Post } from '@/payload-types'
+import type { Essay, Post, Shard } from '@/payload-types'
 
 import { Card } from '../../components/Card'
 import { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
+import type { ArticleCollectionSlug } from '@/types/articleCollections'
+
+type ArticleDoc = Post | Essay | Shard
 
 export type RelatedPostsProps = {
   className?: string
-  docs?: Post[]
+  docs?: ArticleDoc[]
   introContent?: DefaultTypedEditorState
+  relationTo?: ArticleCollectionSlug
 }
 
 export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
-  const { className, docs, introContent } = props
+  const { className, docs, introContent, relationTo = 'posts' } = props
 
   return (
     <div className={clsx('lg:container', className)}>
@@ -24,7 +28,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
         {docs?.map((doc, index) => {
           if (typeof doc === 'string') return null
 
-          return <Card key={index} doc={doc} relationTo="posts" showCategories />
+          return <Card key={index} doc={doc} relationTo={relationTo} showCategories />
         })}
       </div>
     </div>

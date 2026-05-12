@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    essays: Essay;
+    shards: Shard;
     media: Media;
     categories: Category;
     users: User;
@@ -87,6 +89,8 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    essays: EssaysSelect<false> | EssaysSelect<true>;
+    shards: ShardsSelect<false> | ShardsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -186,6 +190,14 @@ export interface Page {
               | ({
                   relationTo: 'posts';
                   value: string | Post;
+                } | null)
+              | ({
+                  relationTo: 'essays';
+                  value: string | Essay;
+                } | null)
+              | ({
+                  relationTo: 'shards';
+                  value: string | Shard;
                 } | null);
             url?: string | null;
             label: string;
@@ -314,6 +326,14 @@ export interface TextBlock {
       | ({
           relationTo: 'posts';
           value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'essays';
+          value: string | Essay;
+        } | null)
+      | ({
+          relationTo: 'shards';
+          value: string | Shard;
         } | null);
     url?: string | null;
     label: string;
@@ -328,13 +348,63 @@ export interface TextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock".
+ * via the `definition` "essays".
  */
-export interface MediaBlock {
-  media: string | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
+export interface Essay {
+  id: string;
+  title: string;
+  layout: ContentBlock[];
+  relatedEssays?: (string | Essay)[] | null;
+  categories?: (string | Category)[] | null;
+  favicon?: ('none' | 'code.ico' | 'quill.png') | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (string | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: string;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  parent?: (string | null) | Category;
+  breadcrumbs?:
+    | {
+        doc?: (string | null) | Category;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -434,39 +504,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SubscribeBlock".
- */
-export interface SubscribeBlock {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'subscribe';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  title: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  parent?: (string | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (string | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -489,6 +526,61 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shards".
+ */
+export interface Shard {
+  id: string;
+  title: string;
+  layout: ContentBlock[];
+  relatedShards?: (string | Shard)[] | null;
+  categories?: (string | Category)[] | null;
+  favicon?: ('none' | 'code.ico' | 'quill.png') | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (string | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SubscribeBlock".
+ */
+export interface SubscribeBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'subscribe';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -534,6 +626,14 @@ export interface CallToActionBlock {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'essays';
+                value: string | Essay;
+              } | null)
+            | ({
+                relationTo: 'shards';
+                value: string | Shard;
               } | null);
           url?: string | null;
           label: string;
@@ -570,14 +670,24 @@ export interface ArchiveBlock {
     [k: string]: unknown;
   } | null;
   populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'posts' | null;
+  relationTo?: ('posts' | 'essays' | 'shards') | null;
   categories?: (string | Category)[] | null;
   limit?: number | null;
   selectedDocs?:
-    | {
-        relationTo: 'posts';
-        value: string | Post;
-      }[]
+    | (
+        | {
+            relationTo: 'posts';
+            value: string | Post;
+          }
+        | {
+            relationTo: 'essays';
+            value: string | Essay;
+          }
+        | {
+            relationTo: 'shards';
+            value: string | Shard;
+          }
+      )[]
     | null;
   id?: string | null;
   blockName?: string | null;
@@ -828,6 +938,14 @@ export interface SideTabPanel {
               | ({
                   relationTo: 'posts';
                   value: string | Post;
+                } | null)
+              | ({
+                  relationTo: 'essays';
+                  value: string | Essay;
+                } | null)
+              | ({
+                  relationTo: 'shards';
+                  value: string | Shard;
                 } | null);
             url?: string | null;
             label?: string | null;
@@ -1030,6 +1148,14 @@ export interface Redirect {
       | ({
           relationTo: 'posts';
           value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'essays';
+          value: string | Essay;
+        } | null)
+      | ({
+          relationTo: 'shards';
+          value: string | Shard;
         } | null);
     url?: string | null;
   };
@@ -1063,10 +1189,19 @@ export interface Search {
   id: string;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'posts';
-    value: string | Post;
-  };
+  doc:
+    | {
+        relationTo: 'posts';
+        value: string | Post;
+      }
+    | {
+        relationTo: 'essays';
+        value: string | Essay;
+      }
+    | {
+        relationTo: 'shards';
+        value: string | Shard;
+      };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -1190,6 +1325,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: string | Post;
+      } | null)
+    | ({
+        relationTo: 'essays';
+        value: string | Essay;
+      } | null)
+    | ({
+        relationTo: 'shards';
+        value: string | Shard;
       } | null)
     | ({
         relationTo: 'media';
@@ -1554,6 +1697,76 @@ export interface PostsSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
       };
   relatedPosts?: T;
+  categories?: T;
+  favicon?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "essays_select".
+ */
+export interface EssaysSelect<T extends boolean = true> {
+  title?: T;
+  layout?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+      };
+  relatedEssays?: T;
+  categories?: T;
+  favicon?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shards_select".
+ */
+export interface ShardsSelect<T extends boolean = true> {
+  title?: T;
+  layout?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+      };
+  relatedShards?: T;
   categories?: T;
   favicon?: T;
   meta?:
@@ -2113,6 +2326,14 @@ export interface Header {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'essays';
+                value: string | Essay;
+              } | null)
+            | ({
+                relationTo: 'shards';
+                value: string | Shard;
               } | null);
           url?: string | null;
           label: string;
@@ -2142,6 +2363,14 @@ export interface Footer {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'essays';
+                value: string | Essay;
+              } | null)
+            | ({
+                relationTo: 'shards';
+                value: string | Shard;
               } | null);
           url?: string | null;
           label: string;
@@ -2171,6 +2400,14 @@ export interface ChatHeader {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'essays';
+                value: string | Essay;
+              } | null)
+            | ({
+                relationTo: 'shards';
+                value: string | Shard;
               } | null);
           url?: string | null;
           label: string;
@@ -2200,6 +2437,14 @@ export interface ChatFooter {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'essays';
+                value: string | Essay;
+              } | null)
+            | ({
+                relationTo: 'shards';
+                value: string | Shard;
               } | null);
           url?: string | null;
           label: string;
@@ -2318,6 +2563,14 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'essays';
+          value: string | Essay;
+        } | null)
+      | ({
+          relationTo: 'shards';
+          value: string | Shard;
         } | null);
     global?: string | null;
     user?: (string | null) | User;

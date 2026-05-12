@@ -4,18 +4,23 @@ import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import type { Post } from '@/payload-types'
+import type { Essay, Post, Shard } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import './Component.css'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+import type { ArticleCollectionSlug } from '@/types/articleCollections'
+
+export type CardArchiveDoc =
+  | Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+  | Pick<Essay, 'slug' | 'categories' | 'meta' | 'title'>
+  | Pick<Shard, 'slug' | 'categories' | 'meta' | 'title'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
   className?: string
-  doc?: CardPostData
-  relationTo?: 'posts'
+  doc?: CardArchiveDoc
+  relationTo?: ArticleCollectionSlug
   showCategories?: boolean
   title?: string
 }> = (props) => {
@@ -28,7 +33,7 @@ export const Card: React.FC<{
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
-  const href = `/${relationTo}/${slug}`
+  const href = relationTo ? `/${relationTo}/${slug}` : undefined
 
   return (
     <article className={cn('card-cont', className)} ref={card.ref}>
@@ -63,7 +68,7 @@ export const Card: React.FC<{
             )}
           </div>
         )}
-        {titleToUse && (
+        {titleToUse && href && (
           <div className="prose">
             <h3>
               <Link className="not-prose" href={href} ref={link.ref}>

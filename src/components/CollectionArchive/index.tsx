@@ -7,14 +7,19 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import './Component.css'
 
-import { Card, CardPostData } from '@/components/Card'
+import { Card, CardArchiveDoc } from '@/components/Card'
+
+import type { ArticleCollectionSlug } from '@/types/articleCollections'
 
 export type Props = {
-  posts: CardPostData[]
+  docs: CardArchiveDoc[]
+  relationTo: ArticleCollectionSlug
+  /** Per-row collection (e.g. search). When omitted, `relationTo` applies to every doc. */
+  relationTos?: ArticleCollectionSlug[]
 }
 
 export const CollectionArchive: React.FC<Props> = (props) => {
-  const { posts } = props
+  const { docs, relationTo, relationTos } = props
 
   return (
     <div className="collection-archive-cont">
@@ -30,11 +35,12 @@ export const CollectionArchive: React.FC<Props> = (props) => {
             1024: { slidesPerView: 4, spaceBetween: 24 },
           }}
         >
-          {posts?.map((result, index) => {
+          {docs?.map((result, index) => {
             if (typeof result === 'object' && result !== null) {
+              const rel = relationTos?.[index] ?? relationTo
               return (
                 <SwiperSlide key={index}>
-                  <Card className="h-full" doc={result} relationTo="posts" showCategories />
+                  <Card className="h-full" doc={result} relationTo={rel} showCategories />
                 </SwiperSlide>
               )
             }

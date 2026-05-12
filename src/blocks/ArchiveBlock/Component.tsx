@@ -1,4 +1,4 @@
-import type { Post, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
+import type { Essay, Post, Shard, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -7,19 +7,34 @@ import RichText from '@/components/RichText'
 import './Component.css'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import type { ArticleCollectionSlug } from '@/types/articleCollections'
+
+type ArticleDoc = Post | Essay | Shard
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
     id?: string
   }
 > = async (props) => {
-  const { id, categories, introContent, limit: limitFromProps, populateBy, selectedDocs } = props
+  const {
+    id,
+    categories,
+    introContent,
+    limit: limitFromProps,
+    populateBy,
+    relationTo,
+    selectedDocs,
+  } = props
 
   const limit = limitFromProps || 3
 
-  let posts: Post[] = []
+  let docs: ArticleDoc[] = []
+  let collectionSlug: ArticleCollectionSlug = 'posts'
 
   if (populateBy === 'collection') {
+    const slug = (relationTo || 'posts') as ArticleCollectionSlug
+    collectionSlug = slug
+
     const payload = await getPayload({ config: configPromise })
 
     const flattenedCategories = categories?.map((category) => {
@@ -27,8 +42,8 @@ export const ArchiveBlock: React.FC<
       else return category
     })
 
-    const fetchedPosts = await payload.find({
-      collection: 'posts',
+    const fetched = await payload.find({
+      collection: slug,
       depth: 1,
       limit,
       sort: '-createdAt',
@@ -43,16 +58,26 @@ export const ArchiveBlock: React.FC<
         : {}),
     })
 
-    posts = fetchedPosts.docs
+    docs = fetched.docs as ArticleDoc[]
   } else {
     if (selectedDocs?.length) {
-      const filteredSelectedPosts = selectedDocs.map((post) => {
-        if (typeof post.value === 'object') return post.value
-      }) as Post[]
+      const filtered = selectedDocs
+        .map((entry) => {
+          if (typeof entry.value === 'object' && entry.value !== null) {
+            return entry.value as ArticleDoc
+          }
+          return undefined
+        })
+        .filter(Boolean) as ArticleDoc[]
 
-      posts = filteredSelectedPosts
+      docs = filtered
     }
   }
+
+  const relationTos: ArticleCollectionSlug[] | undefined =
+    populateBy === 'selection' && selectedDocs?.length
+      ? selectedDocs.map((entry) => entry.relationTo as ArticleCollectionSlug)
+      : undefined
 
   return (
     <div className="collection-archive" id={`block-${id}`}>
@@ -61,7 +86,11 @@ export const ArchiveBlock: React.FC<
           <RichText className="text" data={introContent} enableGutter={false} />
         </div>
       )}
-      <CollectionArchive posts={posts} />
+      <CollectionArchive
+        docs={docs}
+        relationTo={relationTos ? 'posts' : collectionSlug}
+        relationTos={relationTos}
+      />
     </div>
   )
 }

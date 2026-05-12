@@ -1,47 +1,10 @@
-import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
+import { createRevalidateArticleHooks } from '@/collections/_shared/hooks/createRevalidateArticleHooks'
 
-import { revalidatePath, revalidateTag } from 'next/cache'
+const { revalidateOnChange, revalidateOnDelete } = createRevalidateArticleHooks({
+  pathPrefix: '/posts',
+  sitemapTag: 'posts-sitemap',
+  docLabel: 'post',
+})
 
-import type { Post } from '../../../payload-types'
-
-export const revalidatePost: CollectionAfterChangeHook<Post> = ({
-  doc,
-  previousDoc,
-  req: { payload, context },
-}) => {
-  if (!context.disableRevalidate) {
-    if (doc._status === 'published') {
-      const path = `/posts/${doc.slug}`
-
-      payload.logger.info(`Revalidating post at path: ${path}`)
-
-      revalidatePath(path)
-      // @ts-ignore - revalidateTag type mismatch
-      revalidateTag('posts-sitemap')
-    }
-
-    // If the post was previously published, we need to revalidate the old path
-    if (previousDoc._status === 'published' && doc._status !== 'published') {
-      const oldPath = `/posts/${previousDoc.slug}`
-
-      payload.logger.info(`Revalidating old post at path: ${oldPath}`)
-
-      revalidatePath(oldPath)
-      // @ts-ignore - revalidateTag type mismatch
-      revalidateTag('posts-sitemap')
-    }
-  }
-  return doc
-}
-
-export const revalidateDelete: CollectionAfterDeleteHook<Post> = ({ doc, req: { context } }) => {
-  if (!context.disableRevalidate) {
-    const path = `/posts/${doc?.slug}`
-
-    revalidatePath(path)
-    // @ts-ignore - revalidateTag type mismatch
-    revalidateTag('posts-sitemap')
-  }
-
-  return doc
-}
+export const revalidatePost = revalidateOnChange
+export const revalidateDelete = revalidateOnDelete

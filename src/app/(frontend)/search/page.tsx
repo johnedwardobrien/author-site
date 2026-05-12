@@ -1,23 +1,50 @@
 import type { Metadata } from 'next/types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import type { CardArchiveDoc } from '@/components/Card'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import { Search } from '@/search/Component'
 import PageClient from './page.client'
-import { CardPostData } from '@/components/Card'
+import type { Search as SearchDoc } from '@/payload-types'
+import type { ArticleCollectionSlug } from '@/types/articleCollections'
 
 type Args = {
   searchParams: Promise<{
     q: string
   }>
 }
+
+function mapSearchHits(hits: SearchDoc[]): {
+  docs: CardArchiveDoc[]
+  relationTos: ArticleCollectionSlug[]
+} {
+  const docs: CardArchiveDoc[] = []
+  const relationTos: ArticleCollectionSlug[] = []
+
+  for (const hit of hits) {
+    const d = hit.doc
+    if (!d || typeof d.value !== 'object' || !d.value) continue
+    const v = d.value
+    const rel = d.relationTo as ArticleCollectionSlug
+    docs.push({
+      slug: v.slug,
+      title: hit.title ?? v.title,
+      meta: hit.meta ?? v.meta,
+      categories: v.categories,
+    })
+    relationTos.push(rel)
+  }
+
+  return { docs, relationTos }
+}
+
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
   const { q: query } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
 
-  const posts = await payload.find({
+  const results = await payload.find({
     collection: 'search',
     depth: 1,
     limit: 12,
@@ -26,8 +53,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       slug: true,
       categories: true,
       meta: true,
+      doc: true,
     },
-    // pagination: false reduces overhead if you don't need totalDocs
     pagination: false,
     ...(query
       ? {
@@ -59,6 +86,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       : {}),
   })
 
+  const { docs, relationTos } = mapSearchHits(results.docs as SearchDoc[])
+
   return (
     <div className="pt-24 pb-24">
       <PageClient />
@@ -72,8 +101,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
       </div>
 
-      {posts.totalDocs > 0 ? (
-        <CollectionArchive posts={posts.docs as CardPostData[]} />
+      {results.totalDocs > 0 ? (
+        <CollectionArchive docs={docs} relationTo="posts" relationTos={relationTos} />
       ) : (
         <div className="container">No results found.</div>
       )}
