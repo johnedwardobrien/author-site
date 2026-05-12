@@ -28,6 +28,11 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
   const headerRef = useRef<HTMLElement>(null)
   const allowScrollAnimateRef = useRef(true)
 
+  const handleMouseEnter = () => {
+    setScrollDirection('up')
+    allowScrollAnimateRef.current = false
+  }
+
   useEffect(() => {
     setHeaderTheme(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,6 +79,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
         backgroundColor: scrollDirection === 'up' ? 'rgb(224,224,225)' : 'transparent'
       }}
       transition={{ duration: 0.2, ease: easeIn }}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => {
         allowScrollAnimateRef.current = true
       }}
@@ -91,7 +97,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
                 }}
                 transition={{ duration: 0.2, ease: easeIn }}
               >
-                John Edward O'Brien
+                John Edward O&apos;Brien
               </motion.div>
             </Link>
           </div>
