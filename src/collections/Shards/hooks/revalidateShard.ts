@@ -1,7 +1,7 @@
 import { createRevalidateArticleHooks } from '@/collections/_shared/hooks/createRevalidateArticleHooks'
 
 const { revalidateOnChange, revalidateOnDelete } = createRevalidateArticleHooks({
-  pathPrefix: '/shards',
+  pathPrefix: '/shard',
   sitemapTag: 'shards-sitemap',
   docLabel: 'shard',
 })

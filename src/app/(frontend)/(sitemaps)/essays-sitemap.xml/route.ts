@@ -35,7 +35,7 @@ const getEssaysSitemap = unstable_cache(
       ? results.docs
           .filter((doc) => Boolean(doc?.slug))
           .map((doc) => ({
-            loc: `${SITE_URL}/essays/${doc?.slug}`,
+            loc: `${SITE_URL}/essay/${doc?.slug}`,
             lastmod: doc.updatedAt || dateFallback,
           }))
       : []

@@ -6,7 +6,7 @@ import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 
-import type { Essay } from '@/payload-types'
+import type { Shard } from '@/payload-types'
 
 import { PostHeader } from '@/heros/PostHeader'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -19,8 +19,8 @@ import { Footer } from '@/Footer/Component'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
-  const essays = await payload.find({
-    collection: 'essays',
+  const shards = await payload.find({
+    collection: 'shards',
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
     },
   })
 
-  return essays.docs.map(({ slug }) => ({ slug }))
+  return shards.docs.map(({ slug }) => ({ slug }))
 }
 
 type Args = {
@@ -39,13 +39,13 @@ type Args = {
   }>
 }
 
-export default async function EssayPage({ params: paramsPromise }: Args) {
+export default async function ShardPage({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  const url = '/essays/' + slug
-  const essay = await queryEssayBySlug({ slug })
+  const url = '/shard/' + slug
+  const shard = await queryShardBySlug({ slug })
 
-  if (!essay) return <PayloadRedirects url={url} />
+  if (!shard) return <PayloadRedirects url={url} />
 
   return (
     <>
@@ -56,8 +56,8 @@ export default async function EssayPage({ params: paramsPromise }: Args) {
         <PayloadRedirects disableNotFound url={url} />
 
         {draft && <LivePreviewListener />}
-        <PostHeader post={essay} />
-        <RenderBlocks blocks={essay.layout} />
+        <PostHeader post={shard} />
+        <RenderBlocks blocks={shard.layout} />
       </article>
       <Footer />
     </>
@@ -66,21 +66,21 @@ export default async function EssayPage({ params: paramsPromise }: Args) {
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  const essay = await queryEssayBySlug({ slug })
+  const shard = await queryShardBySlug({ slug })
 
   return generateMeta({
-    doc: essay,
-    path: `/essays/${slug}`,
+    doc: shard,
+    path: `/shard/${slug}`,
   })
 }
 
-const queryEssayBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryShardBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'essays',
+    collection: 'shards',
     draft,
     limit: 1,
     depth: 10,
@@ -93,5 +93,5 @@ const queryEssayBySlug = cache(async ({ slug }: { slug: string }) => {
     },
   })
 
-  return (result.docs?.[0] as Essay | undefined) || null
+  return (result.docs?.[0] as Shard | undefined) || null
 })

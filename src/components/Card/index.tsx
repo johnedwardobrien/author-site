@@ -16,6 +16,12 @@ export type CardArchiveDoc =
   | Pick<Essay, 'slug' | 'categories' | 'meta' | 'title'>
   | Pick<Shard, 'slug' | 'categories' | 'meta' | 'title'>
 
+const articlePathPrefixMap: Record<ArticleCollectionSlug, string> = {
+  posts: '/posts',
+  essays: '/essay',
+  shards: '/shard',
+}
+
 export const Card: React.FC<{
   alignItems?: 'center'
   className?: string
@@ -33,7 +39,7 @@ export const Card: React.FC<{
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
-  const href = relationTo ? `/${relationTo}/${slug}` : undefined
+  const href = relationTo ? `${articlePathPrefixMap[relationTo]}/${slug}` : undefined
 
   return (
     <article className={cn('card-cont', className)} ref={card.ref}>

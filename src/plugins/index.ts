@@ -34,10 +34,10 @@ const generateURL: GenerateURL<SeoDoc> = ({ doc, collectionSlug }) => {
     return `${url}/posts/${slug}`
   }
   if (collectionSlug === 'essays') {
-    return `${url}/essays/${slug}`
+    return `${url}/essay/${slug}`
   }
   if (collectionSlug === 'shards') {
-    return `${url}/shards/${slug}`
+    return `${url}/shard/${slug}`
   }
 
   return `${url}/${slug}`

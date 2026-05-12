@@ -35,7 +35,7 @@ const getShardsSitemap = unstable_cache(
       ? results.docs
           .filter((doc) => Boolean(doc?.slug))
           .map((doc) => ({
-            loc: `${SITE_URL}/shards/${doc?.slug}`,
+            loc: `${SITE_URL}/shard/${doc?.slug}`,
             lastmod: doc.updatedAt || dateFallback,
           }))
       : []
