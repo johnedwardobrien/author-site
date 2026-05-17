@@ -22,6 +22,7 @@ export const HeaderMobileClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+  const siteTitle = data.siteTitle || ''
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -44,7 +45,7 @@ export const HeaderMobileClient: React.FC<HeaderClientProps> = ({ data }) => {
           <div className="header-title">
             <Link href="/">
               <div>
-                John Edward O'Brien
+                {siteTitle}
               </div>
             </Link>
             <div

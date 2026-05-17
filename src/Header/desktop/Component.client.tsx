@@ -24,6 +24,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down')
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+  const siteTitle = data.siteTitle || ''
 
   const headerRef = useRef<HTMLElement>(null)
   const allowScrollAnimateRef = useRef(true)
@@ -97,7 +98,7 @@ export const HeaderDesktopClient: React.FC<HeaderClientProps> = ({ data }) => {
                 }}
                 transition={{ duration: 0.2, ease: easeIn }}
               >
-                John Edward O&apos;Brien
+                {siteTitle}
               </motion.div>
             </Link>
           </div>

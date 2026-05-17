@@ -10,6 +10,11 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
+      name: 'siteTitle',
+      type: 'text',
+      defaultValue: '',
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [

@@ -2313,6 +2313,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  siteTitle?: string | null;
   navItems?:
     | {
         link: {
@@ -2460,6 +2461,7 @@ export interface ChatFooter {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  siteTitle?: T;
   navItems?:
     | T
     | {
