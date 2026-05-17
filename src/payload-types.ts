@@ -570,9 +570,9 @@ export interface Shard {
 export interface MediaBlock {
   media: string | Media;
   /**
-   * Optional max image width in pixels.
+   * Optional CSS max-width value, e.g. 720px, 80%, or min(100%, 720px).
    */
-  maxWidth?: number | null;
+  maxWidth?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';

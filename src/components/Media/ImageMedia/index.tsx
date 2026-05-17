@@ -65,7 +65,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .join(', ')
 
   const maxWidthStyle: React.CSSProperties | undefined = maxWidth
-    ? { display: 'block', maxWidth: `${maxWidth}px` }
+    ? { display: 'block', maxWidth }
     : undefined
   const imageMaxWidthStyle: React.CSSProperties | undefined = maxWidth
     ? { maxWidth: '100%' }

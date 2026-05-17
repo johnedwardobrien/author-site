@@ -12,10 +12,10 @@ export const MediaBlock: Block = {
     },
     {
       name: 'maxWidth',
-      type: 'number',
+      type: 'text',
       label: 'Max Width',
       admin: {
-        description: 'Optional max image width in pixels.',
+        description: 'Optional CSS max-width value, e.g. 720px, 80%, or min(100%, 720px).',
       },
     },
   ],
