@@ -10,5 +10,13 @@ export const MediaBlock: Block = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'maxWidth',
+      type: 'number',
+      label: 'Max Width',
+      admin: {
+        description: 'Optional max image width in pixels.',
+      },
+    },
   ],
 }

@@ -25,6 +25,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
     enableGutter = true,
     imgClassName,
     media,
+    maxWidth,
     staticImage,
     disableInnerContainer,
   } = props
@@ -46,6 +47,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
       {(media || staticImage) && (
         <Media
           imgClassName={cn(imgClassName)}
+          maxWidth={maxWidth}
           resource={media}
           src={staticImage}
         />

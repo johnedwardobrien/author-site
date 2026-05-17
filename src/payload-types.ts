@@ -569,6 +569,10 @@ export interface Shard {
  */
 export interface MediaBlock {
   media: string | Media;
+  /**
+   * Optional max image width in pixels.
+   */
+  maxWidth?: number | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
@@ -1554,6 +1558,7 @@ export interface TextBlockSelect<T extends boolean = true> {
  */
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
+  maxWidth?: T;
   id?: T;
   blockName?: T;
 }
