@@ -28,6 +28,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     size: sizeFromProps,
     src: srcFromProps,
     loading: loadingFromProps,
+    margin: marginFromProps,
     maxWidth,
     placeholderBlur,
     onLoadCb,
@@ -64,15 +65,18 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .map(([, value]) => `(max-width: ${value}px) ${value * 2}w`)
         .join(', ')
 
-  const maxWidthStyle: React.CSSProperties | undefined = maxWidth
-    ? { display: 'block', maxWidth }
+  const margin =
+    marginFromProps ||
+    (resource && typeof resource === 'object' ? resource.margin : undefined)
+  const pictureStyle: React.CSSProperties | undefined = maxWidth || margin
+    ? { display: 'block', maxWidth: maxWidth || undefined, margin: margin || undefined }
     : undefined
   const imageMaxWidthStyle: React.CSSProperties | undefined = maxWidth
     ? { maxWidth: '100%' }
     : undefined
 
   return (
-    <picture className={cn(pictureClassName)} style={maxWidthStyle}>
+    <picture className={cn(pictureClassName)} style={pictureStyle}>
       {responsiveSources && (
         <>
           {responsiveSources.desktop && (

@@ -56,6 +56,14 @@ export const Media: CollectionConfig = {
       //required: true,
     },
     {
+      name: 'margin',
+      type: 'text',
+      label: 'Margin',
+      admin: {
+        description: 'Optional CSS margin value, e.g. 2rem 0, 0 auto, or 24px.',
+      },
+    },
+    {
       name: 'isVideoThumbnail',
       type: 'checkbox',
       label: 'Is Video Thumbnail',

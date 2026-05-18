@@ -6,7 +6,15 @@ import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { useInView } from 'framer-motion'
 
 export const VideoMedia: React.FC<MediaProps> = (props) => {
-  const { onClick, resource, videoClassName, posterSrc = '', topHero, onCanPlayCb } = props
+  const {
+    margin: marginFromProps,
+    onClick,
+    resource,
+    videoClassName,
+    posterSrc = '',
+    topHero,
+    onCanPlayCb,
+  } = props
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoContRef = useRef<HTMLDivElement>(null)
   // once: true means it stays mounted after first view
@@ -14,8 +22,11 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
 
   if (resource && typeof resource === 'object') {
     const { filename, url, thumbnailURL } = resource
+    const margin = marginFromProps || resource.margin
+    const videoContStyle: React.CSSProperties | undefined = margin ? { margin } : undefined
+
     return (
-      <div className="video-media-cont" ref={videoContRef}>
+      <div className="video-media-cont" ref={videoContRef} style={videoContStyle}>
         {(isInView || topHero) && (
           <video
             className={cn(videoClassName)}

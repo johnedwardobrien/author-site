@@ -415,6 +415,10 @@ export interface Media {
   videoThumbnail?: (string | null) | Media;
   videoThumbnailFilename?: string | null;
   alt?: string | null;
+  /**
+   * Optional CSS margin value, e.g. 2rem 0, 0 auto, or 24px.
+   */
+  margin?: string | null;
   isVideoThumbnail?: boolean | null;
   caption?: {
     root: {
@@ -1803,6 +1807,7 @@ export interface MediaSelect<T extends boolean = true> {
   videoThumbnail?: T;
   videoThumbnailFilename?: T;
   alt?: T;
+  margin?: T;
   isVideoThumbnail?: T;
   caption?: T;
   prefix?: T;
