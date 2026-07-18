@@ -87,7 +87,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }
           })()} */}
           {children}
-          <Analytics />
+          <Analytics
+            beforeSend={(event) => (event.url.includes('/admin') ? null : event)}
+          />
           {/* {(() => {
             switch (footerType) {
               case 'chat':
