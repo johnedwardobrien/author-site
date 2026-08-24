@@ -1,4 +1,3 @@
-import { s3Storage } from '@payloadcms/storage-s3'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
 import sharp from 'sharp' // sharp-import
@@ -94,33 +93,7 @@ export default buildConfig({
   collections: [Pages, Posts, Essays, Shards, Media, Categories, Users, YachtParallaxItem, ScrollWindow],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, ChatHeader, ChatFooter],
-  plugins: [
-    ...plugins,
-    s3Storage({
-      collections: {
-        media: {
-          prefix: 'media',
-          disablePayloadAccessControl: true,
-          generateFileURL: ({ filename, prefix }) => {
-            const cloudfrontUrl = (process.env.NEXT_PUBLIC_CLOUDFRONT_URL || '').replace(/\/$/, '')
-            if (prefix) {
-              return `${cloudfrontUrl}/${prefix}/${filename}`
-            }
-            return `${cloudfrontUrl}/${filename}`
-          },
-        },
-      },
-      bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || '',
-      config: {
-        credentials: {
-          accessKeyId: process.env.NEXT_PUBLIC_MY_AWS_ACCESS_KEY || '',
-          secretAccessKey: process.env.NEXT_PUBLIC_MY_AWS_SECRET_ACCESS_KEY || '',
-        },
-        region: process.env.AWS_REGION || process.env.NEXT_PUBLIC_AWS_REGION || 'us-east-1',
-      },
-      clientUploads: true,
-    }),
-  ],
+  plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {

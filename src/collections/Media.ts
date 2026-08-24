@@ -96,13 +96,13 @@ export const Media: CollectionConfig = {
   },
   upload: {
     adminThumbnail: ({ doc }) => {
-      if (doc.isVideoThumbnail) {
-      }
-      if (doc.videoThumbnailFilename) {
-        return `${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}${doc.prefix}/${doc.videoThumbnailFilename}`
-      }
-      return `${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}${doc.prefix}/${doc.filename}`
+      const sizes = doc.sizes as { thumbnail?: { filename?: string | null } } | undefined
+      const thumbnailFilename =
+        doc.videoThumbnailFilename || sizes?.thumbnail?.filename || doc.filename
+
+      return thumbnailFilename ? `/media/${thumbnailFilename}` : null
     },
+    staticDir: path.resolve(dirname, '../../public/media'),
     focalPoint: true,
     imageSizes: [
       {

@@ -14,8 +14,7 @@ export const CustomVideoThumbnail: RelationshipFieldClientComponent = (props) =>
   // Set default thumbnailUrl from existing videoThumbnailFilename
   useEffect(() => {
     if (fields?.videoThumbnailFilename?.value && !thumbnailUrl) {
-      const cloudfrontUrl = (process.env.NEXT_PUBLIC_CLOUDFRONT_URL || '').replace(/\/$/, '')
-      const defaultThumbnailUrl = `${cloudfrontUrl}/media/${fields.videoThumbnailFilename?.value}`
+      const defaultThumbnailUrl = `/media/${fields.videoThumbnailFilename?.value}`
       setThumbnailUrl(defaultThumbnailUrl)
     }
   }, [fields?.videoThumbnailFilename?.value, thumbnailUrl])
