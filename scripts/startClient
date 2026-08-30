@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Assumes you are already in the project root.
+# Usage: startClient --db=essay-site
+
+set -euo pipefail
+
+if [[ ! -f package.json ]]; then
+  echo "Run this from the project root." >&2
+  exit 1
+fi
+
+DB=""
+for arg in "$@"; do
+  case "$arg" in
+    --db=*)
+      DB="${arg#--db=}"
+      ;;
+    -h|--help)
+      echo "Usage: startClient --db=<name>" >&2
+      exit 0
+      ;;
+    *)
+      echo "Usage: startClient --db=<name>" >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z "$DB" ]]; then
+  echo "Usage: startClient --db=<name>" >&2
+  exit 1
+fi
+
+if [[ ! "$DB" =~ ^[A-Za-z0-9_-]+$ ]]; then
+  echo "Invalid database name: $DB" >&2
+  exit 1
+fi
+
+export MONGODB_URI="mongodb://localhost:27017/${DB}"
+echo "Starting with MONGODB_URI=${MONGODB_URI}"
+exec pnpm dev
